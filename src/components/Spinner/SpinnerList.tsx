@@ -1,18 +1,16 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useStore from '../../store/SpinnerStore';
-import { faTrashAlt, faCirclePlus, faCircleMinus } from '@fortawesome/free-solid-svg-icons';
-import { useEffect } from 'react';
-import CardBody from './Card/CardBody';
-import Image from 'next/image';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 const SpinnerList = () => {
     const store = useStore();
     const removeItem = (removedItem: number) => {
         store.updateItems(store.WheelItems.filter((item) => { return item.id !== removedItem }));
+        store.setSelectedItem(null);
     }
     return (
         <>
-            <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+            <div className="w-32 overflow-visible  max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                 <div className="flow-root">
                     <ul role="list" className="divide-y divide-gray-200 dark:divide-gray-700 overflow-scroll">
                         {store.WheelItems.map((item) => (

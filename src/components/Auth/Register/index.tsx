@@ -1,10 +1,17 @@
 import { MainTemplate } from "@component/Auth/MainTemplate";
 import AuthStore from '@stores/AuthStore';
 import { registerUser } from '@services/index'
-import type { User } from "@types/UserTypes";
 import React from "react";
 import Datetime from 'react-datetime';
-
+export interface User {
+    Name: string;
+    Surname: string;
+    Email: string;
+    PhoneNumber: string;
+    Password: string;
+    Gender: number;
+    DateOfBirth: string;
+}
 export const Register = () => {
     const store = AuthStore();
     const submitHandle = async (e: any) => {

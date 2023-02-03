@@ -98,7 +98,7 @@ const Navbar = () => {
                   </Menu.Button>
                   : null}
               </div>
-              <GenerateProfileMenu profileMenus={profileMenus} />
+              <GenerateProfileMenu ProfileMenus={profileMenus} />
             </Menu>
             <button onClick={handleNav} data-collapse-toggle="mobile-menu-2" type="button" className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
               <span className="sr-only">Open main menu</span>
@@ -116,12 +116,22 @@ const Navbar = () => {
   );
 
 };
-
-const GenerateProfileMenu = ({ profileMenus }) => {
+export interface Menu {
+  ID: number;
+  MenuName: string;
+  Href: string;
+  Auth: boolean;
+  AuthorizedDisplay: boolean;
+  Order: number;
+}
+interface IGenerateProfileMenuProps {
+  ProfileMenus: Array<Menu>
+}
+const GenerateProfileMenu = ({ ProfileMenus }:IGenerateProfileMenuProps) => {
   return (
     <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
       <div className="px-1 py-1 ">
-        {profileMenus.map((item) => (
+        {ProfileMenus.map((item) => (
           <Menu.Item key={item.ID}>
             {({ active }) => (
               <Link href={item.Href} className={`${active ? 'bg-gray-500 text-white' : 'text-gray-900'

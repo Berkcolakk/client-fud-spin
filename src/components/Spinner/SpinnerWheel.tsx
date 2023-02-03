@@ -1,11 +1,19 @@
 "use client"
+/* eslint-disable */
 import SpinnerStore from '@stores/SpinnerStore';
-import { useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
 import { spinnerLog } from '@services/index';
-import { Wheel } from "@types/SpinnerWheelsTypes";
 import { LoadingBox } from '../Helpers';
-const SpinnerWheel = ({ Wheels }: Array<Wheel>) => {
-    const [loading,setLoading] = useState(true);
+export interface Wheel {
+    id:number;
+    name:string;
+    color:string;
+}
+interface IProps {
+    Wheels: Array<Wheel>
+}
+const SpinnerWheel = ({ Wheels }: IProps) => {
+    const [loading, setLoading] = useState(true);
     const store = SpinnerStore();
     useEffect(() => {
         store.updateItems(Wheels);
@@ -28,15 +36,17 @@ const SpinnerWheel = ({ Wheels }: Array<Wheel>) => {
             store.setSelectedItem(null);
         }
     }
-    if(loading) {
-        return (LoadingBox);
+    if (loading) {
+        return (<LoadingBox isLoading={loading} />);
     }
     return (
         <div className='lg:flex sm:block items-start justify-center p-2 px-2 border-2 border-gray-600 rounded-lg'>
             <div className="block relative box-content select-none wheel-container bg-white rounded-2/4 p-c-3 border-4 border-solid border-primaryColor">
+                
                 <div className={`block relative box-content overflow-hidden cursor-pointer dark:bg-primaryColor bg-slate-300 wheel rounded-2/4 border-solid border-border-5 border-primaryColor ${spinning}`} style={wheelVars} onClick={SelectedHandle}>
                     {store.WheelItems.map((item, index) => (
-                        <div className="block absolute box-border text-right wheel-item px-6 top-2/4 left-2/4 w-2/4 text-white" key={index} style={{ '--pie': index, "--pie-color": item.color }}>
+                        
+                        <div className="block absolute box-border text-right wheel-item px-6 top-2/4 left-2/4 w-2/4 text-white" key={index} style={{ "--pie": index, "--pie-color": item.color }}>
                             {item.name}
                         </div>
                     ))}

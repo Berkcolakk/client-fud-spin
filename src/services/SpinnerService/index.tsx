@@ -6,7 +6,7 @@ import { getAllSpinnerDataEndpoint, spinnerLogEndpoint } from '@utils/apiCostant
 
 export const getAllSpinnerData = async () => {
     try {
-        const response = await BaseService.get(getAllSpinnerDataEndpoint); // Added await keyword to the BaseService call 
+        const response = await BaseService.get(getAllSpinnerDataEndpoint); // Added await keyword to the BaseService call z
         const { data } = response; // Removed await keyword from response 
         return data;
     } catch (error) {

@@ -1,6 +1,6 @@
-import translation from '@localization/Translation';
+import Translation from '@localization/Translation';
 export const MenuList = () => {
-    const { lang } = translation();
+    const { lang } = Translation();
     const menuArr = [
         { ID: 1, MenuName: lang("menu.stats"), Href: "/Stats", Auth: true, AuthorizedDisplay: true, Order: 5 },
         { ID: 2, MenuName: lang("menu.leaders"), Href: "/Leaders", Auth: false, AuthorizedDisplay: true, Order: 4 },
@@ -13,7 +13,7 @@ export const MenuList = () => {
 }
 
 export const ProfileMenuList = () => {
-    const { lang } = translation();
+    const { lang } = Translation();
     const menuArr = [
         { ID: 1, MenuName: lang("menu.profile.settings"), Href: "/Settings", Auth: true, AuthorizedDisplay: true, Order: 1 },
         { ID: 2, MenuName: lang("menu.profile.logout"), Href: "/Logout", Auth: false, AuthorizedDisplay: true, Order: 2 }

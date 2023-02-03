@@ -18,12 +18,10 @@ export default function RootLayout({
       localStorage.setItem(key, b64e(JSON.stringify(myObject)));
     }
     Storage.prototype.getObjectHash = (key: string) => {
-      try {
-        var myObject: any = localStorage.getItem(key);
-        return b64d(myObject) && JSON.parse(b64d(myObject));
-      } catch (error) {
-        return undefined
-      }
+      var myObject: any = localStorage.getItem(key);
+      if (myObject === null)
+        return null;
+      return b64d(myObject) && JSON.parse(b64d(myObject));
     }
     const GetLangugageList = async () => {
       debugger;

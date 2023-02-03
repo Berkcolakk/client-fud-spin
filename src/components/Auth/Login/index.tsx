@@ -4,17 +4,20 @@ import AuthStore from '@stores/AuthStore';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 import * as Yup from "yup";
 import { FieldValidationMessage } from '@component/Helpers';
-import translation from '@localization/translation';
+import Translation from '@localization/Translation';
 import Link from "next/link";
 import { loginUser } from "@services/index";
-import type { UserDTO } from "@types/UserTypes";
 import { useEffect, useState } from 'react';
 import { useRouter } from "next/navigation";
 import { LoadingBox } from "@component/Helpers";
+interface UserDTO {
+    Email: string;
+    Password: string;
+}
 const AuthLogin = () => {
     const [loading, setLoading] = useState(true);
     const navigate = useRouter();
-    const { lang } = translation();
+    const { lang } = Translation();
     const store = AuthStore();
     const SignupSchema = Yup.object().shape({
         Password: Yup.string()
@@ -51,12 +54,12 @@ const AuthLogin = () => {
                         <div>
                             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{lang("login.email.lbl")}</label>
                             <Field name="Email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" type="email" id="Email" />
-                            {errors.Email && touched.Email ? <FieldValidationMessage message={errors.Email} /> : null}
+                            {errors.Email && touched.Email ? <FieldValidationMessage Message={errors.Email} /> : null}
                         </div>
                         <div>
                             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{lang("login.password.lbl")}</label>
                             <Field type="password" name="Password" id="Password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                            {errors.Password && touched.Password ? <FieldValidationMessage message={errors.Password} /> : null}
+                            {errors.Password && touched.Password ? <FieldValidationMessage Message={errors.Password} /> : null}
                         </div>
                         <div className="flex items-center justify-between">
                             <div className="flex items-start">

@@ -1,9 +1,16 @@
-import { Menu } from "@types/NavbarTypes";
 import Link from "next/link";
 import { getUser } from "@utils/getUser.utils";
 
 interface IProps {
     MenuList: Array<Menu>;
+}
+export interface Menu {
+    ID: number;
+    MenuName: string;
+    Href: string;
+    Auth: boolean;
+    AuthorizedDisplay:boolean;
+    Order:number;
 }
 export const GenerateMenuList = ({ MenuList }: IProps): JSX.Element => {
     const { isValid } = getUser();

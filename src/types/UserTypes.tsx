@@ -23,7 +23,3 @@ export interface Store {
     setDateOfBirth(payload: string): void;
     setGender(payload: number): void;
 }
-export interface UserDTO {
-    Email: string;
-    Password: string;
-}
