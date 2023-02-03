@@ -4,7 +4,7 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
 
 const instance = axios.create({
-    baseURL:"http://localhost:3000/api"
+    baseURL:process.env.NEXT_PUBLIC_HOST
 })
 
 const api = (axios: AxiosInstance) => {
