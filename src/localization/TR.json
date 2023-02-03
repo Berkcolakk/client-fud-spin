@@ -1,0 +1,62 @@
+[
+    {
+        "Key": "login.signin.lbl",
+        "Value": "Giriş yap"
+    },
+    {
+        "Key": "login.email.lbl",
+        "Value": "Email"
+    },
+    {
+        "Key": "login.password.lbl",
+        "Value": "Şifre"
+    },
+    {
+        "Key": "login.rememberme.lbl",
+        "Value": "Beni hatırla"
+    },
+    {
+        "Key": "login.password.forgot.lbl",
+        "Value": "Şifremi unuttum"
+    },
+    {
+        "Key": "login.dont.yet.account.lbl",
+        "Value": "Henüz bir hesabınız yok mu?"
+    },
+    {
+        "Key": "login.signup.lbl",
+        "Value": "Kayıt ol"
+    },
+    {
+        "Key": "menu.stats",
+        "Value": "İstatistikler"
+    },
+    {
+        "Key": "menu.login",
+        "Value": "Giriş"
+    },
+    {
+        "Key": "menu.profile.settings",
+        "Value": "Ayarlar"
+    },
+    {
+        "Key": "menu.profile.logout",
+        "Value": "Çıkış"
+    },
+    {
+        "Key": "menu.leaders",
+        "Value": "Liderlik"
+    },
+    {
+        "Key": "menu.social",
+        "Value": "Sosyal"
+    },
+    {
+        "Key": "menu.news",
+        "Value": "Haberler"
+    },
+    {
+        "Key": "menu.profile",
+        "Value": "Profil"
+    }
+]

@@ -1,0 +1,78 @@
+[
+    {
+        "Key": "login.signin.lbl",
+        "Value": "Sign in"
+    },
+    {
+        "Key": "login.email.lbl",
+        "Value": "Email"
+    },
+    {
+        "Key": "login.password.lbl",
+        "Value": "Password"
+    },
+    {
+        "Key": "login.rememberme.lbl",
+        "Value": "Remember me"
+    },
+    {
+        "Key": "login.password.forgot.lbl",
+        "Value": "Password forgot"
+    },
+    {
+        "Key": "login.dont.yet.account.lbl",
+        "Value": "Don’t have an account yet?"
+    },
+    {
+        "Key": "login.signup.lbl",
+        "Value": "Register"
+    },
+    {
+        "Key": "menu.stats",
+        "Value": "Stats"
+    },
+    {
+        "Key": "menu.login",
+        "Value": "Login"
+    },
+    {
+        "Key": "menu.profile.settings",
+        "Value": "Settings"
+    },
+    {
+        "Key": "menu.profile.logout",
+        "Value": "Logout"
+    },
+    {
+        "Key": "menu.leaders",
+        "Value": "Leaders"
+    },
+    {
+        "Key": "menu.social",
+        "Value": "Socials"
+    },
+    {
+        "Key": "menu.news",
+        "Value": "News"
+    },
+    {
+        "Key": "menu.profile",
+        "Value": "Profile"
+    },
+    {
+        "Key": "login.error.max.length",
+        "Value": "Maximum character limit exceeded"
+    },
+    {
+        "Key": "login.error.password.required",
+        "Value": "Password is required"
+    },
+    {
+        "Key": "login.error.email.required",
+        "Value": "Email is required"
+    },
+    {
+        "Key": "login.error.email.invalid",
+        "Value": "Email is invalid"
+    }
+]
