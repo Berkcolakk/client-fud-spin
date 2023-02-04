@@ -1,13 +1,36 @@
-import type { LoaderArgs, ActionFunction } from "@remix-run/node"; // or cloudflare/deno
-import { useLoaderData } from "@remix-run/react";
-import { json } from "@remix-run/node"; // or cloudflare/deno
+import { v4 as uuidv4 } from 'uuid';
+import type { NextApiRequest, NextApiResponse } from 'next'
 
-export const action: ActionFunction = async ({ request }: LoaderArgs) => {
-    if (request.method.toLocaleLowerCase() === "post") {
-        const reader = request.body?.getReader();
-        const data = await reader?.read()
-        const bodyJSON = new TextDecoder().decode(data?.value)
-        // return JSON.parse(bodyJSON);
-        return { canMaxSpin: 15, userSpin: 5 }
-    }
+export default function handler(
+    req: NextApiRequest,
+    res: NextApiResponse
+) {
+    const datas = [
+        {
+            id: uuidv4(),
+            name: "Pizzas",
+            color: "#AA5656"
+        },
+        {
+            id: uuidv4(),
+            name: "Hamburger",
+            color: "#FFEA20"
+        },
+        {
+            id: uuidv4(),
+            name: "Pastas",
+            color: "#CD0404"
+        },
+        {
+            id: uuidv4(),
+            name: "Risotto",
+            color: "#A31ACB"
+        },
+        {
+            id: uuidv4(),
+            name: "Doner",
+            color: "#FF6E31"
+        }
+    ]
+    res.status(200).json(datas)
 }

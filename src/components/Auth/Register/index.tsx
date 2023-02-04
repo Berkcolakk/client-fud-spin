@@ -3,20 +3,13 @@ import AuthStore from '@stores/AuthStore';
 import { registerUser } from '@services/index'
 import React from "react";
 import Datetime from 'react-datetime';
-export interface User {
-    Name: string;
-    Surname: string;
-    Email: string;
-    PhoneNumber: string;
-    Password: string;
-    Gender: number;
-    DateOfBirth: string;
-}
+import { IUser } from "@interfaces/Users/UsersInterfaces";
+
 export const Register = () => {
     const store = AuthStore();
     const submitHandle = async (e: any) => {
         e.preventDefault();
-        const user: User = {
+        const user: IUser = {
             Name: store.Name,
             Surname: store.Surname,
             Email: store.Email,

@@ -1,8 +1,8 @@
 import { create } from 'zustand'
 import { getAllSpinnerData } from '@services/index';
-import { Wheel } from "@types/SpinnerWheelsTypes";
-export interface Store {
-    WheelItems: Wheel[];
+import { IWheel } from '@interfaces/Wheels/WheelsInterfaces';
+export interface IStore {
+    WheelItems: IWheel[];
     SelectedItem: any;
     WheelName: string;
     setSelectedItem(payload: any): void;
@@ -20,7 +20,7 @@ This code creates a store using the Zustand library. The store contains the foll
 - fetchWheels(): an async function that fetches all spinner data from an external service and sets it as the value for WheelItems. 
 The store is then exported as useStore.
 */
-const SpinnerStore = create<Store>((set: any, get: any) => ({
+const SpinnerStore = create<IStore>((set: any, get: any) => ({
     WheelItems: [],
     WheelName: "",
     setWheelName: (payload: any) => set((state: any) => ({ WheelName: payload })),

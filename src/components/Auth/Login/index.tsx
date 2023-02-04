@@ -10,10 +10,7 @@ import { loginUser } from "@services/index";
 import { useEffect, useState } from 'react';
 import { useRouter } from "next/navigation";
 import { LoadingBox } from "@component/Helpers";
-interface UserDTO {
-    Email: string;
-    Password: string;
-}
+import { IUserDTO } from "@interfaces/Users/UsersInterfaces";
 const AuthLogin = () => {
     const [loading, setLoading] = useState(true);
     const navigate = useRouter();
@@ -33,8 +30,8 @@ const AuthLogin = () => {
         }
         setLoading(false);
     }, [])
-    const formSubmitHandle = (values: UserDTO,
-        { setSubmitting }: FormikHelpers<UserDTO>) => {
+    const formSubmitHandle = (values: IUserDTO,
+        { setSubmitting }: FormikHelpers<IUserDTO>) => {
         setSubmitting(false);
         const data = loginUser(values);
         localStorage.setObjectHash("auth", data)

@@ -1,17 +1,10 @@
 import Link from "next/link";
 import { getUser } from "@utils/getUser.utils";
-
+import { IMenu } from "@interfaces/MenusInterfaces/MenusInterfaces";
 interface IProps {
-    MenuList: Array<Menu>;
+    MenuList: Array<IMenu>;
 }
-export interface Menu {
-    ID: number;
-    MenuName: string;
-    Href: string;
-    Auth: boolean;
-    AuthorizedDisplay:boolean;
-    Order:number;
-}
+
 export const GenerateMenuList = ({ MenuList }: IProps): JSX.Element => {
     const { isValid } = getUser();
     return (

@@ -1,12 +1,9 @@
-import type { LoaderArgs, ActionFunction } from "@remix-run/node"; // or cloudflare/deno
-import { useLoaderData } from "@remix-run/react";
-import { json } from "@remix-run/node"; // or cloudflare/deno
+import { v4 as uuidv4 } from 'uuid';
+import type { NextApiRequest, NextApiResponse } from 'next'
 
-export const action: ActionFunction = async ({ request }: LoaderArgs) => {
-    if (request.method.toLocaleLowerCase() === "post") {
-        const reader = request.body?.getReader();
-        const data = await reader?.read()
-        const bodyJSON = new TextDecoder().decode(data?.value)
-        return JSON.parse(bodyJSON);
-    }
+export default function handler(
+    req: NextApiRequest,
+    res: NextApiResponse
+) {
+    res.status(200).json({})
 }

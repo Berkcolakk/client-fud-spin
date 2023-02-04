@@ -31,8 +31,8 @@
       "@component/*": [
         "./src/components/*"
       ],
-      "@types/*": [
-        "./src/types/*"
+      "@interfaces/*": [
+        "./src/interfaces/*"
       ],
       "@services/*": [
         "./src/services/*"

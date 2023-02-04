@@ -1,7 +1,21 @@
 import { create } from 'zustand';
-import { Store } from '@types/UserTypes';
-
-const AuthStore = create<Store>((set: any, get: any) => ({
+export interface IStore {
+    Name: string;
+    Surname: string;
+    Email: string;
+    PhoneNumber: string;
+    Password: string;
+    Gender: number;
+    DateOfBirth: string;
+    setName(payload: string): void;
+    setSurname(payload: string): void;
+    setEmail(payload: string): void;
+    setPhoneNumber(payload: string): void;
+    setPassword(payload: string): void;
+    setDateOfBirth(payload: string): void;
+    setGender(payload: number): void;
+}
+const AuthStore = create<IStore>((set: any, get: any) => ({
     Name: "",
     Surname: "",
     Email: "",

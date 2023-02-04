@@ -3,16 +3,16 @@
 // Refactored code: 
 import { create } from 'zustand';
 
-export interface KeyValue {
+export interface IKeyValue {
     Key: string,
     Value: string
 }
-interface Store {
+interface IStore {
     locale: string;
-    CurrentLanguageList: KeyValue[];
+    CurrentLanguageList: IKeyValue[];
     setCurrentLanguageList(payload: any): void;
 }
-const LanguageStore = create<Store>((set, get) => ({  // Removed unnecessary type annotations. 
+const LanguageStore = create<IStore>((set, get) => ({  // Removed unnecessary type annotations. 
     locale: "",  // Initialize locale to empty string. 
     CurrentLanguageList: [],  // Initialize CurrentLanguageList to empty array. 
 

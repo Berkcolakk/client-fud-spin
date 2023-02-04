@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react'
 import { getUser } from "@utils/getUser.utils";
 import { LoadingBox } from '@component/Helpers/index';
 import Image from 'next/image';
-
+import { IMenu } from '@interfaces/MenusInterfaces/MenusInterfaces';
 
 const Navbar = () => {
   const [loading, setLoading] = useState(true);
@@ -116,18 +116,11 @@ const Navbar = () => {
   );
 
 };
-export interface Menu {
-  ID: number;
-  MenuName: string;
-  Href: string;
-  Auth: boolean;
-  AuthorizedDisplay: boolean;
-  Order: number;
-}
+
 interface IGenerateProfileMenuProps {
-  ProfileMenus: Array<Menu>
+  ProfileMenus: Array<IMenu>
 }
-const GenerateProfileMenu = ({ ProfileMenus }:IGenerateProfileMenuProps) => {
+const GenerateProfileMenu = ({ ProfileMenus }: IGenerateProfileMenuProps) => {
   return (
     <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
       <div className="px-1 py-1 ">
