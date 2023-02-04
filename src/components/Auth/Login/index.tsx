@@ -1,5 +1,5 @@
 "use client"
-import { MainTemplate } from "@component/Auth/MainTemplate";
+import MainTemplate from "@component/Auth/MainTemplate";
 import AuthStore from '@stores/AuthStore';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 import * as Yup from "yup";

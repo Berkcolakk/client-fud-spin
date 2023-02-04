@@ -1,8 +1,8 @@
 "use client";
 import '@styles/tailwind.css';
 import '@styles/index.css';
-import { b64d, b64e } from '@/utils';
-import Navbar from '@/components/Navbar/Navbar';
+import { b64d, b64e } from '@utils/index';
+import Navbar from '@component/Navbar/Navbar';
 import { useEffect } from 'react'
 import LanguageStore from '@stores/LanguageStore';
 import TR from '@localization/TR.json';

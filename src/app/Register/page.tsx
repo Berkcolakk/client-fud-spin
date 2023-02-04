@@ -1,7 +1,8 @@
+import AuthRegister from '@component/Auth/Register';
 const Login = () => {
     return (
         <>
-            Register
+            <AuthRegister />
         </>
     )
 }

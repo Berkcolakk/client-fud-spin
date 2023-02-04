@@ -1,11 +1,13 @@
-import { MainTemplate } from "@component/Auth/MainTemplate";
+"use client"
+import MainTemplate from "@component/Auth/MainTemplate";
 import AuthStore from '@stores/AuthStore';
 import { registerUser } from '@services/index'
 import React from "react";
 import Datetime from 'react-datetime';
 import { IUser } from "@interfaces/Users/UsersInterfaces";
+import "react-datetime/css/react-datetime.css";
 
-export const Register = () => {
+const AuthRegister = () => {
     const store = AuthStore();
     const submitHandle = async (e: any) => {
         e.preventDefault();
@@ -76,3 +78,4 @@ export const Register = () => {
         </MainTemplate >
     )
 }
+export default AuthRegister;
