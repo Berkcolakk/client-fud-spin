@@ -1,9 +1,9 @@
-import AuthRegister from '@component/Auth/Register';
-const Login = () => {
+import RegisterContainer from "@containers/Auth/Register";
+const Register = () => {
     return (
         <>
-            <AuthRegister />
+            <RegisterContainer />
         </>
     )
 }
-export default Login;
+export default Register;

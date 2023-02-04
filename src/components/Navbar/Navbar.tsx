@@ -7,12 +7,10 @@ import { faMoon, faLightbulb, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Menu } from '@headlessui/react'
 import { useEffect, useState } from 'react'
 import { getUser } from "@utils/getUser.utils";
-import { LoadingBox } from '@component/Helpers/index';
 import Image from 'next/image';
 import { IMenu } from '@interfaces/MenusInterfaces/MenusInterfaces';
 
 const Navbar = () => {
-  const [loading, setLoading] = useState(true);
   const [nav, setNav] = useState(false);
   const [theme, setTheme] = useState(false);
   const menus = MenuList();
@@ -56,7 +54,6 @@ const Navbar = () => {
         }
         break;
     }
-    setLoading(false)
   }, [])
   const themeChangeHandle = (e: any) => {
     if (theme) {
@@ -67,9 +64,6 @@ const Navbar = () => {
       document.documentElement.classList.add('dark');
     }
     setTheme(!theme);
-  }
-  if (loading) {
-    return (<LoadingBox isLoading={loading} />)
   }
   const { isValid } = getUser();
   return (
@@ -107,7 +101,7 @@ const Navbar = () => {
           </div>
           <div className={nav ? "items-center justify-between w-full md:flex md:w-auto md:order-1" : "items-center justify-between hidden w-full md:flex md:w-auto md:order-1"} id="mobile-menu-2">
             <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-              <GenerateMenuList MenuList={menus} />
+              <GenerateMenuList MenuList={menus} UserIsValid={isValid} />
             </ul>
           </div>
         </div>

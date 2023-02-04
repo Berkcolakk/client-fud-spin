@@ -1,23 +1,23 @@
 
 
 // Refactored code: 
-import BaseService from "@services/BaseService";
 import { userRegisterEndpoint, userLoginEndpoint } from '@utils/apiCostant.utils'
-import { IUserDTO,IUser } from "@interfaces/Users/UsersInterfaces";
-const requestOptions = { headers: { 'Content-Type': 'application/json; charset=UTF-8', } };
+import { IUserDTO, IUser } from "@interfaces/Users/UsersInterfaces";
 
 export const registerUser = async (user: IUser) => {
     try {
-        const response = await BaseService.post(userRegisterEndpoint, user, requestOptions);
-        return response.data;
+        const result = await fetch(`${process.env.NEXT_PUBLIC_HOST}${userRegisterEndpoint}`,{
+            cache:'no-store'
+        })
+        return result.json();
     } catch (error) {
         console.error(error);
     }
 };
 export const loginUser = async (user: IUserDTO) => {
     try {
-        const response = await BaseService.post(userLoginEndpoint, user, requestOptions);
-        return response.data;
+        const result = await fetch(`${process.env.NEXT_PUBLIC_HOST}${userLoginEndpoint}`)
+        return result.json();
     } catch (error) {
         console.error(error);
     }

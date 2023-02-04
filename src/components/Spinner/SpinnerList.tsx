@@ -4,7 +4,7 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 const SpinnerList = () => {
     const store = useStore();
-    const removeItem = (removedItem: number) => {
+    const removeItem = (removedItem: string) => {
         store.updateItems(store.WheelItems.filter((item) => { return item.id !== removedItem }));
         store.setSelectedItem(null);
     }

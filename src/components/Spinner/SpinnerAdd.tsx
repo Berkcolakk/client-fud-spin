@@ -1,35 +1,32 @@
 "use client"
 import useStore from '../../store/SpinnerStore';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashAlt, faCirclePlus, faCircleMinus } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 import { v4 as uuidv4 } from 'uuid';
 import SpinnerList from './SpinnerList';
-import { useEffect, useState } from 'react';
-import { LoadingBox } from '../Helpers';
 /**
  * Author: @Berkcolakk
  * This code is a React component that allows the user to add items to a spinner wheel. It imports the SpinnerStore from the store folder, as well as FontAwesomeIcon and uuidv4 from their respective packages. It has two functions, removeItem and AddItem. The removeItem function takes in an item and filters out any items that don't match the removed item's id from the store's WheelItems array. The AddItem function checks if the WheelName is empty or if an item with the same name already exists in the WheelItems array, then creates an object with a unique id, name, and color for each item in a comma-separated list of entries. It then updates the WheelItems array with these objects. The component also contains a text input field for entering entries, a button for adding entries to the wheel, and a button for removing all entries from the wheel. Finally, it renders an unordered list of all items in the WheelItems array with buttons for removing individual items.
  */
 const SpinnerAdd = () => {
     const store = useStore();
-    const [loading, setLoading] = useState(true);
     const AddItem = (e: any) => {
         let colorArr = ["#AA5656", "#B99B6B", "#698269", "#F94A29", "#FCE22A", "#30E3DF", "#D61355"];
         if (!store.WheelName || store.WheelItems.some(item => item.name.trim() === store.WheelName.trim())) {
-            return (<div></div>);
+            return (<></>);
         }
         colorArr = colorArr.filter((color: string) => {
             return store.WheelItems.some(item => item.color === color) ? null : color
         });
         if (colorArr.length == 0) {
-            return (<div></div>)
+            return (<></>)
         }
         const isSingle = store.WheelName.indexOf(",");
         if (isSingle === -1) {
             const data = { id: uuidv4(), name: store.WheelName, color: colorArr[Math.floor(Math.random() * colorArr.length)] };
             store.updateItems([...store.WheelItems, ...[data]])
             store.setWheelName("");
-            return (<div></div>);
+            return (<></>);
         }
         let arr = [];
         for (let index = 0; index < store.WheelName.split(',').length; index++) {
@@ -39,12 +36,6 @@ const SpinnerAdd = () => {
         }
         store.updateItems([...store.WheelItems, ...arr])
         store.setWheelName("");
-    }
-    useEffect(() => {
-        setLoading(false);
-    }, [])
-    if (loading) {
-        return (<LoadingBox isLoading={loading} />);
     }
     const allRemove = () => {
         store.updateItems([])
@@ -60,7 +51,6 @@ const SpinnerAdd = () => {
             </button>
             <SpinnerList />
         </div>
-
     )
 }
 export default SpinnerAdd;

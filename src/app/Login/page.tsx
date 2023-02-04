@@ -1,9 +1,7 @@
-import AuthLogin from "@component/Auth/Login";
+import LoginContainer from "@containers/Auth/Login";
 const Login = () => {
     return (
-        <>
-            <AuthLogin />
-        </>
+        <LoginContainer />
     )
 }
 export default Login;

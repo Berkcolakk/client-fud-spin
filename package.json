@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "dev:css": "tailwindcss -w -i ./styles/tailwind.css -o src/styles/tailwind.css"
+    "dev:css": "tailwindcss -w -i ./styles/tailwind.css -o src/styles/tailwind.css",
+    "test": "jest --watch"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
@@ -19,6 +20,7 @@
     "@types/react": "18.0.27",
     "@types/react-dom": "18.0.10",
     "axios": "^1.2.6",
+    "cookies-next": "^2.1.1",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
     "formik": "^2.2.9",

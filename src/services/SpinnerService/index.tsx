@@ -1,30 +1,25 @@
 
 
 // Refactored code: 
-import BaseService from "@services/BaseService";
+import { getUser } from "@/utils/getUser.utils";
 import { getAllSpinnerDataEndpoint, spinnerLogEndpoint } from '@utils/apiCostant.utils'
-
 export const getAllSpinnerData = async () => {
     try {
-        const response = await BaseService.get(getAllSpinnerDataEndpoint); // Added await keyword to the BaseService call z
-        const { data } = response; // Removed await keyword from response 
-        return data;
+        const result = await fetch(`${process.env.NEXT_PUBLIC_HOST}${getAllSpinnerDataEndpoint}`,{
+            cache:"no-store"
+        })
+        return result.json();
     } catch (error) {
         console.error(error);
     }
 };
 
- export const spinnerLog = async (obj: any) => { // Changed the name of the function to be more descriptive 
+export const spinnerLog = async (obj: any) => { // Changed the name of the function to be more descriptive 
     try {
-        const response = await BaseService.post(spinnerLogEndpoint, obj, { // Added await keyword to the BaseService call 
-            headers: { 'Content-Type': 'application/json; charset=UTF-8', } // Added a comma after the endpoint URL 
-        }); 
+        const result = await fetch(`${process.env.NEXT_PUBLIC_HOST}${spinnerLogEndpoint}`)
+        return result.json();
 
-        const { data } = response; // Removed await keyword from response  
-
-        return data; 
-
-    } catch (error) { 
-        console.error(error); 
-    }  
+    } catch (error) {
+        console.error(error);
+    }
 }

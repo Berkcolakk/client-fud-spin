@@ -1,19 +1,17 @@
 "use client"
-
 import SpinnerStore from '@stores/SpinnerStore';
 import { useEffect, useState } from 'react';
 import { spinnerLog } from '@services/index';
-import { LoadingBox } from '../Helpers';
 import { IWheel } from '@interfaces/Wheels/WheelsInterfaces';
+import { getStorageItem } from '@utils/storageHash.utils';
+
 interface IProps {
     Wheels: Array<IWheel>
 }
 const SpinnerWheel = ({ Wheels }: IProps) => {
-    const [loading, setLoading] = useState(true);
     const store = SpinnerStore();
     useEffect(() => {
         store.updateItems(Wheels);
-        setLoading(false);
     }, [])
     // const themeColor = localStorage.getItem("theme") == "dark" ? "#A27B5C" : "#E1D7C6"
     const spinning = store.SelectedItem !== null ? "spinning" : "";
@@ -31,9 +29,6 @@ const SpinnerWheel = ({ Wheels }: IProps) => {
         } else {
             store.setSelectedItem(null);
         }
-    }
-    if (loading) {
-        return (<LoadingBox isLoading={loading} />);
     }
     /* eslint-disable */
     return (

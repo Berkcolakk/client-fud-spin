@@ -3,15 +3,15 @@ import { getUser } from "@utils/getUser.utils";
 import { IMenu } from "@interfaces/MenusInterfaces/MenusInterfaces";
 interface IProps {
     MenuList: Array<IMenu>;
+    UserIsValid:boolean;
 }
 
-export const GenerateMenuList = ({ MenuList }: IProps): JSX.Element => {
-    const { isValid } = getUser();
+export const GenerateMenuList = ({ MenuList,UserIsValid }: IProps): JSX.Element => {
     return (
         <>
             {
                 MenuList.map((item, i) => {
-                    if ((item.Auth && !isValid) || (isValid && !item.AuthorizedDisplay)) {
+                    if ((item.Auth && !UserIsValid) || (UserIsValid && !item.AuthorizedDisplay)) {
                         return null;
                     }
                     return (

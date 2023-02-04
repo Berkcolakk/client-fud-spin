@@ -7,12 +7,10 @@ import { FieldValidationMessage } from '@component/Helpers';
 import Translation from '@localization/Translation';
 import Link from "next/link";
 import { loginUser } from "@services/index";
-import { useEffect, useState } from 'react';
 import { useRouter } from "next/navigation";
-import { LoadingBox } from "@component/Helpers";
 import { IUserDTO } from "@interfaces/Users/UsersInterfaces";
+import { getStorageItem, setCookieObjectHash } from '@utils/storageHash.utils';
 const AuthLogin = () => {
-    const [loading, setLoading] = useState(true);
     const navigate = useRouter();
     const { lang } = Translation();
     const store = AuthStore();
@@ -23,25 +21,15 @@ const AuthLogin = () => {
 
         Email: Yup.string().email(lang('login.error.email.invalid')).required(lang('login.error.email.required'))
     });
-    useEffect(() => {
-        const auth = localStorage.getItem("auth");
-        if (auth != null) {
-            navigate.push("/")
-        }
-        setLoading(false);
-    }, [])
-    const formSubmitHandle = (values: IUserDTO,
+    const formSubmitHandle = async (values: IUserDTO,
         { setSubmitting }: FormikHelpers<IUserDTO>) => {
         setSubmitting(false);
-        const data = loginUser(values);
-        localStorage.setObjectHash("auth", data)
+        const data = await loginUser(values);
+        setCookieObjectHash("auth", data, 30)
         navigate.push("/")
     }
-    if (loading) {
-        return (<LoadingBox isLoading={loading} />)
-    }
     return (
-        <MainTemplate>
+        <>
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 {lang("login.signin.lbl")}
             </h1>
@@ -76,7 +64,7 @@ const AuthLogin = () => {
                     </Form>
                 )}
             </Formik>
-        </MainTemplate >
+        </ >
     )
 }
 export default AuthLogin;
