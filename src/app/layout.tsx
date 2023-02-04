@@ -24,7 +24,6 @@ export default function RootLayout({
       return b64d(myObject) && JSON.parse(b64d(myObject));
     }
     const GetLangugageList = async () => {
-      debugger;
       const BrowserLang = navigator.language.split('-')[0].toLocaleLowerCase();
       const languages = localStorage.getObjectHash("preferences");
       if (BrowserLang === "tr") {

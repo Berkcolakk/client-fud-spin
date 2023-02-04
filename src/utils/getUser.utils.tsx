@@ -3,7 +3,6 @@
  * @returns true or false
  */
 export const getUser = () => {
-    debugger;
     const authUser = localStorage.getObjectHash("auth")
     let isValid = false;
     if (authUser != null) {

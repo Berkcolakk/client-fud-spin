@@ -1,5 +1,5 @@
 "use client"
-/* eslint-disable */
+
 import SpinnerStore from '@stores/SpinnerStore';
 import { useEffect, useState } from 'react';
 import { spinnerLog } from '@services/index';
@@ -35,6 +35,7 @@ const SpinnerWheel = ({ Wheels }: IProps) => {
     if (loading) {
         return (<LoadingBox isLoading={loading} />);
     }
+    /* eslint-disable */
     return (
         <div className='lg:flex sm:block items-start justify-center p-2 px-2 border-2 border-gray-600 rounded-lg'>
             <div className="block relative box-content select-none wheel-container bg-white rounded-2/4 p-c-3 border-4 border-solid border-primaryColor">
