@@ -51,6 +51,9 @@
       ],
       "@containers/*": [
         "./src/containers/*"
+      ],
+      "@layout/*": [
+        "./src/layout/*"
       ]
     }
   },

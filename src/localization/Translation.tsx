@@ -24,7 +24,7 @@ const useTranslation = () => {
       return result != undefined ? result?.Value : key;
     }
     else {
-      return key;
+      return "";
     }
 
   }, [store.CurrentLanguageList])

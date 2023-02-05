@@ -12,7 +12,6 @@ export const getStorageItem = (key: string) => {
     return b64d(myObject) && JSON.parse(b64d(myObject));
 }
 export const setCookieObjectHash = (name: string, value: any, days: any) => {
-    debugger;
     if (!value)
         return;
     var d = new Date();
@@ -21,7 +20,6 @@ export const setCookieObjectHash = (name: string, value: any, days: any) => {
     setCookie(name, b64e(JSON.stringify(value)), { expires: d, path: "/" });
 }
 export const getCookieObjectHash = (name: string) => {
-    debugger;
     const item = getCookie(name);
     if (!item) {
         return null;

@@ -1,4 +1,3 @@
-
 import { getAllSpinnerData } from '@services/SpinnerService';
 import { IWheel } from '@interfaces/Wheels/WheelsInterfaces';
 import HomeContainer from '@containers/Home';
@@ -8,4 +7,4 @@ const Home = async () => {
     <HomeContainer Wheels={data} />
   )
 }
-export default Home
+export default Home;

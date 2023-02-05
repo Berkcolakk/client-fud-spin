@@ -1,4 +1,5 @@
 import { getCookieObjectHash } from '@utils/storageHash.utils';
+
 /** Author: @Berkcolakk
  * Returns true if there is an authorized user, otherwise false.
  * @returns true or false

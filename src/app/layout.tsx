@@ -1,6 +1,4 @@
 "use client";
-import '@styles/tailwind.css';
-import '@styles/index.css';
 import { useEffect } from 'react'
 import LanguageStore from '@stores/LanguageStore';
 import TR from '@localization/TR.json';
@@ -8,7 +6,9 @@ import EN from '@localization/EN.json';
 import { b64d, b64e } from '@utils/hashService.utils';
 import { getStorageItem, insertStorageItem } from '@utils/storageHash.utils';
 import { Inter } from '@next/font/google';
-import Navbar from '@component/Navbar/Navbar';
+import Navbar from '@/layout/Navbar';
+import '@styles/global.css';
+import { FudSpinProvider } from "@/context/appContext";
 
 const interFontFamily = Inter({ subsets: ["latin"] });
 
@@ -45,8 +45,10 @@ export default function RootLayout({
     <html lang="en" className={`dark ${interFontFamily.className}`}>
       <head />
       <body className=" bg-lightModeContainerColor dark:bg-darkModeContainerColor font-sans">
-        <Navbar />
-        <main>{children}</main>
+        <FudSpinProvider>
+          <Navbar />
+          <main>{children}</main>
+        </FudSpinProvider>
       </body>
     </html>
   )
