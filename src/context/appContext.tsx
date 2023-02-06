@@ -8,6 +8,8 @@ import { IMenu } from '@interfaces/MenusInterfaces/MenusInterfaces';
 import { GetAuthorizedMenu, GetUnAuthorizedMenu } from '@/data/MenuList';
 import { getUser } from '@utils/getUser.utils';
 import { removeCookies } from '@utils/storageHash.utils';
+import { v4 as uuidv4 } from 'uuid';
+
 interface IContext {
     Spinners: Array<IWheel>;
     SetSpinners: any;
@@ -39,7 +41,34 @@ interface IFudSpinProvider {
 }
 export const FudSpinProvider = ({ children }: IFudSpinProvider) => {
     /**Spinner states. */
-    const [Spinners, SetSpinners] = useState<Array<IWheel>>([]);
+    const DefaultSpinnerList = [
+        {
+            id: uuidv4(),
+            name: "Pizzas",
+            color: "#AA5656"
+        },
+        {
+            id: uuidv4(),
+            name: "Hamburger",
+            color: "#FFEA20"
+        },
+        {
+            id: uuidv4(),
+            name: "Pastas",
+            color: "#CD0404"
+        },
+        {
+            id: uuidv4(),
+            name: "Risotto",
+            color: "#A31ACB"
+        },
+        {
+            id: uuidv4(),
+            name: "Doner",
+            color: "#FF6E31"
+        }
+    ]
+    const [Spinners, SetSpinners] = useState<Array<IWheel>>(DefaultSpinnerList);
     const [SpinnerWheelName, SetSpinnerWheelName] = useState<string>("");
     const [SpinnerSelectedItem, SetSpinnerSelectedItem] = useState<any>(null);
     /**Spinner states. */
@@ -59,17 +88,16 @@ export const FudSpinProvider = ({ children }: IFudSpinProvider) => {
     /**Login states. */
     useEffect(() => {
         /**Navbar Menu Setter. */
-        debugger;
         const { menuList, profileMenuList } = GetAuthorizedMenu();
         const { unAuthorizedMenuList } = GetUnAuthorizedMenu();
-        if ((!arraysAreEqual(MenuList, menuList) || !arraysAreEqual(profileMenuList, ProfileMenuList)) && IsAuth) {
+        if ((!ArraysAreEqual(MenuList, menuList) || !ArraysAreEqual(profileMenuList, ProfileMenuList)) && IsAuth) {
             SetMenuList(menuList);
             SetProfileMenuList(profileMenuList);
-        } else if ((!arraysAreEqual(MenuList, unAuthorizedMenuList)) && !IsAuth) {
+        } else if ((!ArraysAreEqual(MenuList, unAuthorizedMenuList)) && !IsAuth) {
             SetMenuList(unAuthorizedMenuList);
         }
-    }, [ProfileMenuList, MenuList, IsAuth])
-    function arraysAreEqual(ary1: any, ary2: any) {
+    }, [IsAuth])
+    const ArraysAreEqual = (ary1: any, ary2: any) => {
         return (ary1.join('') == ary2.join(''));
     }
     useEffect(() => {

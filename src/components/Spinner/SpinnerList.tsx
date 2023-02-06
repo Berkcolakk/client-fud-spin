@@ -1,18 +1,20 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import UseFudSpinContext from "@/context/appContext";
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-
+import 'react-perfect-scrollbar/dist/css/styles.css';
+import PerfectScrollbar from 'react-perfect-scrollbar'
 const SpinnerList = () => {
     const {Spinners,SetSpinners,SetSpinnerSelectedItem} = UseFudSpinContext();
     const removeItem = (removedItem: string) => {
-        SetSpinners(Spinners.filter((item) => { return item.id !== removedItem }));
+        const newList = Spinners.filter((item) => { return item.id !== removedItem });
+        SetSpinners(newList);
         SetSpinnerSelectedItem(null);
     }
     return (
-        <>
-            <div className="w-32 overflow-visible  max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <PerfectScrollbar className='h-full'>
+            <div className="max-w-md p-4 bg-white border border-gray-200 rounded-lg  dark:bg-gray-800 dark:border-gray-700">
                 <div className="flow-root">
-                    <ul role="list" className="divide-y divide-gray-200 dark:divide-gray-700 overflow-scroll">
+                    <ul role="list" className="divide-y divide-gray-200 dark:divide-gray-700 ">
                         {Spinners.map((item) => (
                             <li key={item.id} className="py-3 sm:py-4">
                                 <div className="flex items-center space-x-4">
@@ -31,7 +33,7 @@ const SpinnerList = () => {
                     </ul>
                 </div>
             </div>
-        </>
+        </PerfectScrollbar>
     )
 }
 export default SpinnerList;
