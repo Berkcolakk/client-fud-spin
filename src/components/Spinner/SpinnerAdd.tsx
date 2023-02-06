@@ -42,12 +42,12 @@ const SpinnerAdd = () => {
         SetSpinnerSelectedItem(null);
     }
     return (
-        <div className='py-4 h-96 p-4'>
+        <div className='py-4 p-4 border border-gray-200 rounded-lg  dark:bg-gray-900 dark:border-gray-700 w-full'>
             <div className='flex-auto flex'>
                 <input type="text" className="block w-full p-2 text-xs text-gray-900 border border-gray-300 rounded-md bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Entry 1, Entry 2" onChange={(e) => SetSpinnerWheelName(e.currentTarget.value)} required value={SpinnerWheelName} />
-                <button type="submit" className="p-4 text-white text-xs bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-2 py-1 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={AddItem}><FontAwesomeIcon icon={faCirclePlus} /></button>
+                <button type="submit" className="p-4 text-white text-xs bg-gray-900 hover:bg-gray-800 focus:ring-4 focus:outline-none rounded-xl focus:ring-blue-300 font-medium px-2 py-1 dark:bg-primaryColor dark:hover:bg-primary-600 dark:focus:ring-blue-800" onClick={AddItem}>Add Item</button>
             </div>
-            <button className='text-white bg-red-800 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg text-sm px-2 dark:bg-red-500 dark:hover:bg-red-700 dark:focus:ring-red-800' onClick={allRemove}><FontAwesomeIcon icon={faTrashAlt} />
+            <button className='text-white bg-red-800 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg text-sm px-2 dark:bg-red-500 dark:hover:bg-red-700 dark:focus:ring-red-800' onClick={allRemove}>Delete all
             </button>
             <SpinnerList />
         </div>
