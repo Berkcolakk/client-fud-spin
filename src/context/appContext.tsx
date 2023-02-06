@@ -7,8 +7,9 @@ import { IUser } from '@interfaces/Users/UsersInterfaces';
 import { IMenu } from '@interfaces/MenusInterfaces/MenusInterfaces';
 import { GetAuthorizedMenu, GetUnAuthorizedMenu } from '@/data/MenuList';
 import { getUser } from '@utils/getUser.utils';
-import { removeCookies } from '@utils/storageHash.utils';
 import { v4 as uuidv4 } from 'uuid';
+import EN from '@localization/EN.json';
+import TR from '@localization/TR.json';
 
 interface IContext {
     Spinners: Array<IWheel>;
@@ -33,6 +34,7 @@ interface IContext {
     SetEmail: any;
     UserPassword: any;
     SetUserPassword: any;
+    CurrentLanguageList: any;
 }
 
 const FudSpinContext = createContext<IContext>({});
@@ -85,7 +87,14 @@ export const FudSpinProvider = ({ children }: IFudSpinProvider) => {
     /**Login && Register states. */
     const [UserEmail, SetEmail] = useState<string>("");
     const [UserPassword, SetUserPassword] = useState<string>("");
-    /**Login states. */
+    /**Login && Register states. */
+
+    /**Language states */
+    const [CurrentLanguage, SetCurrentLanguage] = useState<any>([]);
+
+    const [CurrentLanguageList, SetCurrentLanguageList] = useState<any>([]);
+    /**Language states */
+
     useEffect(() => {
         /**Navbar Menu Setter. */
         const { menuList, profileMenuList } = GetAuthorizedMenu();
@@ -104,7 +113,21 @@ export const FudSpinProvider = ({ children }: IFudSpinProvider) => {
         const { authUser, isValid } = getUser();
         SetIsAuth(isValid);
         SetAuthObj(authUser);
+        SetCurrentLanguage(authUser?.Language || "EN");
     }, [])
+    useEffect(() => {
+        switch (CurrentLanguage) {
+            case "EN":
+                SetCurrentLanguageList(EN);
+                break;
+            case "TR":
+                SetCurrentLanguageList(TR);
+                break;
+            default:
+                SetCurrentLanguageList(EN);
+                break;
+        }
+    }, [CurrentLanguage])
     return (
         <FudSpinContext.Provider value={{
             Spinners,
@@ -128,7 +151,8 @@ export const FudSpinProvider = ({ children }: IFudSpinProvider) => {
             UserEmail,
             SetEmail,
             UserPassword,
-            SetUserPassword
+            SetUserPassword,
+            CurrentLanguageList
         }}>{children}
         </FudSpinContext.Provider>);
 }

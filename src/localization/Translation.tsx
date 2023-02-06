@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import LanguageStore from "@stores/LanguageStore";
-// import parse from 'html-react-parser'
+import UseFudSpinContext from "@/context/appContext";
 
 
 /**
@@ -10,7 +10,7 @@ The convertValueUnicodeChars() function takes in a value as an argument and crea
 The useTranslation() function uses the LanguageStore to find a result with a matching key and returns its value if it exists. If no result is found, it returns the key instead. The lang constant is then set to this function which is returned by default when useTranslation() is called.
 */
 const useTranslation = () => {
-  const store = LanguageStore();
+  const { CurrentLanguageList } = UseFudSpinContext();
 
   /**
    * Author: @Berkcolakk
@@ -18,8 +18,8 @@ const useTranslation = () => {
    * @key key value will be translated.
    */
   const lang = useCallback((key: string): any => {
-    if (store.CurrentLanguageList.length > 0) {
-      const result = store.CurrentLanguageList.find(x => x["Key"] == key);
+    if (CurrentLanguageList.length > 0) {
+      const result = CurrentLanguageList.find(x => x["Key"] == key);
 
       return result != undefined ? result?.Value : key;
     }
@@ -27,7 +27,7 @@ const useTranslation = () => {
       return "";
     }
 
-  }, [store.CurrentLanguageList])
+  }, [CurrentLanguageList])
 
   return { lang };
 }

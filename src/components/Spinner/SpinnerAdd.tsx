@@ -42,7 +42,7 @@ const SpinnerAdd = () => {
         SetSpinnerSelectedItem(null);
     }
     return (
-        <div className='py-4 p-4 border border-gray-200 rounded-lg  dark:bg-gray-900 dark:border-gray-700 w-full'>
+        <div className='py-4 p-4 border border-gray-200 rounded-lg  dark:bg-gray-900 dark:border-gray-700 w-full self-start'>
             <div className='flex-auto flex'>
                 <input type="text" className="block w-full p-2 text-xs text-gray-900 border border-gray-300 rounded-md bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Entry 1, Entry 2" onChange={(e) => SetSpinnerWheelName(e.currentTarget.value)} required value={SpinnerWheelName} />
                 <button type="submit" className="p-4 text-white text-xs bg-gray-900 hover:bg-gray-800 focus:ring-4 focus:outline-none rounded-xl focus:ring-blue-300 font-medium px-2 py-1 dark:bg-primaryColor dark:hover:bg-primary-600 dark:focus:ring-blue-800" onClick={AddItem}>Add Item</button>

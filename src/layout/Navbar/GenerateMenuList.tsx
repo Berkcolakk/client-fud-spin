@@ -3,15 +3,16 @@ import Link from "next/link";
 import { IMenu } from "@interfaces/MenusInterfaces/MenusInterfaces";
 import { getUser } from "@utils/getUser.utils";
 import { useState, useEffect } from 'react';
-import NavbarStore from "@stores/NavbarStore";
 import { MenuList } from '../../data/MenuList';
 import UseFudSpinContext from '@/context/appContext';
+import useTranslation from "@localization/Translation";
 interface IProps {
     MenuList: Array<IMenu>;
 }
 
 export const GenerateMenuList = (): JSX.Element => {
     const [loading, setLoading] = useState(true);
+    const { lang } = useTranslation();
     const { MenuList } = UseFudSpinContext();
     useEffect(() => {
         setLoading(false);
@@ -29,7 +30,7 @@ export const GenerateMenuList = (): JSX.Element => {
                     // }
                     return (
                         <li key={item.ID}>
-                            <Link className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-500 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" title={item.MenuName} href={item.Href}>{item.MenuName} </Link>
+                            <Link className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-500 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" title={lang(item.MenuName)} href={item.Href}>{lang(item.MenuName)} </Link>
                         </li>
                     )
                 })

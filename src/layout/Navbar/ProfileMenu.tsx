@@ -10,6 +10,7 @@ import { ProfileMenuList } from '../../data/MenuList';
 import UseFudSpinContext from '@/context/appContext';
 import { useRouter } from "next/navigation";
 import { removeCookies } from '@utils/storageHash.utils';
+import useTranslation from '@localization/Translation';
 const ProfileMenuButton = () => {
     const [loading, setLoading] = useState(true);
     const { IsAuth } = UseFudSpinContext();
@@ -31,6 +32,7 @@ interface IGenerateProfileMenuProps {
     ProfileMenus: Array<IMenu>
 }
 const GenerateProfileMenu = () => {
+    const { lang } = useTranslation();
     const navigate = useRouter();
     const { ProfileMenuList, SetIsAuth, SetAuthObj } = UseFudSpinContext();
     const [loading, setLoading] = useState(true);
@@ -55,7 +57,7 @@ const GenerateProfileMenu = () => {
                     <Menu.Item key={item.ID}>
                         {({ active }) => (
                             <Link href={item.Href} onClick={handleProfileMenuClick} className={`${active ? 'bg-gray-500 text-white' : 'text-gray-900'
-                                } group flex w-full items-center rounded-md px-2 py-2 text-sm`} >{item.MenuName}</Link>
+                                } group flex w-full items-center rounded-md px-2 py-2 text-sm`} >{lang(item.MenuName)}</Link>
                         )}
                     </Menu.Item>
                 ))}
