@@ -14,7 +14,17 @@ export const MenuList = () => {
 export const ProfileMenuList = () => {
     const menuArr = [
         { ID: 1, MenuName: "Settings", Href: "/Settings", Auth: true, AuthorizedDisplay: true, Order: 1 },
-        { ID: 2, MenuName: "Logout", Href: "/Logout", Auth: false, AuthorizedDisplay: true, Order: 2 }
+        { ID: 2, MenuName: "Logout", Href: "/", Auth: false, AuthorizedDisplay: true, Order: 2 }
     ].sort((a, b) => a.Order - b.Order)
     return menuArr;
+}
+export const GetUnAuthorizedMenu = () => {
+    const unAuthorizedMenuList = MenuList().filter((item) => (item.Auth == false));
+    return { unAuthorizedMenuList }
+}
+
+export const GetAuthorizedMenu = () => {
+    const menuList = MenuList().filter((item) => (item.Auth == true && item.AuthorizedDisplay == true));
+    const profileMenuList = ProfileMenuList();
+    return { menuList, profileMenuList }
 }

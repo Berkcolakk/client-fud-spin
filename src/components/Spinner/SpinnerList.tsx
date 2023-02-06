@@ -1,19 +1,19 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import useStore from '../../store/SpinnerStore';
+import UseFudSpinContext from "@/context/appContext";
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 const SpinnerList = () => {
-    const store = useStore();
+    const {Spinners,SetSpinners,SetSpinnerSelectedItem} = UseFudSpinContext();
     const removeItem = (removedItem: string) => {
-        store.updateItems(store.WheelItems.filter((item) => { return item.id !== removedItem }));
-        store.setSelectedItem(null);
+        SetSpinners(Spinners.filter((item) => { return item.id !== removedItem }));
+        SetSpinnerSelectedItem(null);
     }
     return (
         <>
             <div className="w-32 overflow-visible  max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                 <div className="flow-root">
                     <ul role="list" className="divide-y divide-gray-200 dark:divide-gray-700 overflow-scroll">
-                        {store.WheelItems.map((item) => (
+                        {Spinners.map((item) => (
                             <li key={item.id} className="py-3 sm:py-4">
                                 <div className="flex items-center space-x-4">
                                     <div className="flex-1 min-w-0">

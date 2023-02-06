@@ -1,6 +1,5 @@
 "use client"
 import MainTemplate from "@component/Auth/MainTemplate";
-import AuthStore from '@stores/AuthStore';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 import * as Yup from "yup";
 import { FieldValidationMessage } from '@component/Helpers';
@@ -10,10 +9,12 @@ import { loginUser } from "@services/index";
 import { useRouter } from "next/navigation";
 import { IUserDTO } from "@interfaces/Users/UsersInterfaces";
 import { getStorageItem, setCookieObjectHash } from '@utils/storageHash.utils';
+import UseFudSpinContext from "@/context/appContext";
+UseFudSpinContext
 const AuthLogin = () => {
     const navigate = useRouter();
     const { lang } = Translation();
-    const store = AuthStore();
+    const { UserEmail, UserPassword, SetIsAuth, SetAuthObj } = UseFudSpinContext();
     const SignupSchema = Yup.object().shape({
         Password: Yup.string()
             .max(20, lang("login.error.max.length"))
@@ -26,6 +27,8 @@ const AuthLogin = () => {
         setSubmitting(false);
         const data = await loginUser(values);
         setCookieObjectHash("auth", data, 30)
+        SetAuthObj(true);
+        SetIsAuth(data);
         navigate.push("/")
     }
     return (
@@ -33,7 +36,7 @@ const AuthLogin = () => {
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 {lang("login.signin.lbl")}
             </h1>
-            <Formik validationSchema={SignupSchema} initialValues={{ Email: store.Email, Password: store.Password }} className="space-y-4 md:space-y-6" onSubmit={formSubmitHandle}>
+            <Formik validationSchema={SignupSchema} initialValues={{ Email: UserEmail, Password: UserPassword }} className="space-y-4 md:space-y-6" onSubmit={formSubmitHandle}>
                 {({ errors, touched }) => (
                     <Form noValidate={true}>
                         <div>

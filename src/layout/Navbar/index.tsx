@@ -1,26 +1,26 @@
 "use client";
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import GenerateMenuList from '@/layout/Navbar/GenerateMenuList';
 import Link from "next/link";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faLightbulb, faBars } from '@fortawesome/free-solid-svg-icons';
-import { getUser } from "@utils/getUser.utils";
 import Image from 'next/image';
 import { GenerateProfileMenu, ProfileMenuButton } from './ProfileMenu';
 import { Menu } from '@headlessui/react';
+import UseFudSpinContext from "@/context/appContext";
 export const Navbar = () => {
-    const [nav, setNav] = useState(false);
-    const [theme, setTheme] = useState(false);
+    const { MobileNav, SetMobileNav, DarkTheme, SetDarkTheme } = UseFudSpinContext();
+
     const handleNav = () => {
-        setNav(!nav);
+        SetMobileNav(!MobileNav);
     };
     const setDarkMode = () => {
         document.documentElement.classList.add('dark');
-        setTheme(true);
+        SetDarkTheme(true);
     }
     const setLightMode = () => {
         document.documentElement.classList.remove('dark');
-        setTheme(false);
+        SetDarkTheme(false);
     }
     const getPreferredColorScheme = () => {
         if (window.matchMedia) {
@@ -51,14 +51,14 @@ export const Navbar = () => {
         }
     }, [])
     const themeChangeHandle = (e: any) => {
-        if (theme) {
+        if (DarkTheme) {
             localStorage.theme = "light";
             document.documentElement.classList.remove('dark');
         } else {
             localStorage.theme = "dark";
             document.documentElement.classList.add('dark');
         }
-        setTheme(!theme);
+        SetDarkTheme(!DarkTheme);
     }
     return (
         <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
@@ -76,7 +76,7 @@ export const Navbar = () => {
                     <Menu as="div" className="relative inline-block text-left">
                         <div>
                             <button type='button' className='text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer' onClick={(e) => themeChangeHandle(e)}>
-                                {!theme ? <FontAwesomeIcon icon={faMoon} size='xl' />
+                                {!DarkTheme ? <FontAwesomeIcon icon={faMoon} size='xl' />
                                     : <FontAwesomeIcon icon={faLightbulb} size='xl' />
                                 }
                             </button>
@@ -88,7 +88,7 @@ export const Navbar = () => {
                         <FontAwesomeIcon icon={faBars} size='xl' />
                     </button>
                 </div>
-                <div className={nav ? "items-center justify-between w-full md:flex md:w-auto md:order-1" : "items-center justify-between hidden w-full md:flex md:w-auto md:order-1"}>
+                <div className={MobileNav ? "items-center justify-between w-full md:flex md:w-auto md:order-1" : "items-center justify-between hidden w-full md:flex md:w-auto md:order-1"}>
                     <GenerateMenuList />
                 </div>
             </div>
