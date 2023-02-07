@@ -7,7 +7,7 @@ import Translation from '@localization/Translation';
 import Link from "next/link";
 import { loginUser } from "@services/index";
 import { useRouter } from "next/navigation";
-import { IUserDTO } from "@interfaces/Users/UsersInterfaces";
+import { ILoginDTO } from "@interfaces/Users/UsersInterfaces";
 import { getStorageItem, setCookieObjectHash } from '@utils/storageHash.utils';
 import UseFudSpinContext from "@/context/appContext";
 UseFudSpinContext
@@ -22,8 +22,8 @@ const AuthLogin = () => {
 
         Email: Yup.string().email(lang('login.error.email.invalid')).required(lang('login.error.email.required'))
     });
-    const formSubmitHandle = async (values: IUserDTO,
-        { setSubmitting }: FormikHelpers<IUserDTO>) => {
+    const formSubmitHandle = async (values: ILoginDTO,
+        { setSubmitting }: FormikHelpers<ILoginDTO>) => {
         setSubmitting(false);
         const data = await loginUser(values);
         setCookieObjectHash("auth", data, 30)

@@ -35,8 +35,17 @@ interface IContext {
     UserPassword: any;
     SetUserPassword: any;
     CurrentLanguageList: any;
+    Name: any;
+    SetName: any;
+    Surname: any;
+    SetSurname: any;
+    PhoneNumber: any;
+    SetPhoneNumber: any;
+    Gender: any;
+    SetGender: any;
+    DateOfBirth: any;
+    SetDateOfBirth: any;
 }
-
 const FudSpinContext = createContext<IContext>({});
 interface IFudSpinProvider {
     children: any;
@@ -87,6 +96,11 @@ export const FudSpinProvider = ({ children }: IFudSpinProvider) => {
     /**Login && Register states. */
     const [UserEmail, SetEmail] = useState<string>("");
     const [UserPassword, SetUserPassword] = useState<string>("");
+    const [Name, SetName] = useState<string>("");
+    const [Surname, SetSurname] = useState<string>("");
+    const [PhoneNumber, SetPhoneNumber] = useState<string>("");
+    const [Gender, SetGender] = useState<number>(1);
+    const [DateOfBirth, SetDateOfBirth] = useState<string>("");
     /**Login && Register states. */
 
     /**Language states */
@@ -152,7 +166,17 @@ export const FudSpinProvider = ({ children }: IFudSpinProvider) => {
             SetEmail,
             UserPassword,
             SetUserPassword,
-            CurrentLanguageList
+            CurrentLanguageList,
+            DateOfBirth,
+            SetDateOfBirth,
+            Gender,
+            SetGender,
+            SetName,
+            Name,
+            PhoneNumber,
+            SetPhoneNumber,
+            SetSurname,
+            Surname
         }}>{children}
         </FudSpinContext.Provider>);
 }

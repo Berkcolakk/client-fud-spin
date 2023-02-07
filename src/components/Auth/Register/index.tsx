@@ -1,79 +1,100 @@
 "use client"
-import AuthStore from '@stores/AuthStore';
 import { registerUser } from '@services/index'
 import React from "react";
 import Datetime from 'react-datetime';
-import { IUser } from "@interfaces/Users/UsersInterfaces";
 import "react-datetime/css/react-datetime.css";
+import { Formik, Field, Form, FormikHelpers } from 'formik';
+import * as Yup from "yup";
+import UseFudSpinContext from "@/context/appContext";
+import Translation from '@localization/Translation';
+import { IRegisterDTO } from "@interfaces/Users/UsersInterfaces";
+import { FieldValidationMessage } from '@component/Helpers';
 
 const AuthRegister = () => {
-    const store = AuthStore();
-    const submitHandle = async (e: any) => {
-        e.preventDefault();
-        const user: IUser = {
-            Name: store.Name,
-            Surname: store.Surname,
-            Email: store.Email,
-            Password: store.Password,
-            DateOfBirth: store.DateOfBirth,
-            Gender: store.Gender,
-            PhoneNumber: store.PhoneNumber
-        };
-        const data = await registerUser(user);
+    const { Name, SetName, Surname, SetSurname, UserEmail, SetEmail, SetUserPassword, UserPassword, PhoneNumber, SetPhoneNumber, Gender, SetGender, DateOfBirth, SetDateOfBirth } = UseFudSpinContext();
+    const { lang } = Translation();
+    const SignupSchema = Yup.object().shape({
+        // UserPassword: Yup.string()
+        //     .max(20, lang("login.error.max.length"))
+        //     .required(lang('login.error.password.required')),
+
+        //     UserEmail: Yup.string().email(lang('login.error.email.invalid')).required(lang('login.error.email.required'))
+    });
+    const formSubmitHandle = async (values: IRegisterDTO,
+        { setSubmitting }: FormikHelpers<IRegisterDTO>) => {
+        debugger;
+        setSubmitting(false);
+        console.log(values);
     }
     return (
         <>
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 Create an account
             </h1>
-            <form className="space-y-4 md:space-y-6" onSubmit={submitHandle} noValidate={true}>
-                <div className="grid grid-cols-6 gap-6">
-                    <div className="col-span-6 sm:col-span-3">
-                        <div>
-                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                            <input value={store.Name} onChange={(e) => store.setName(e.currentTarget.value)} type="email" name="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Jane" />
-                        </div>
-                    </div>
+            <Formik validationSchema={SignupSchema} initialValues={{ UserEmail: UserEmail, UserPassword: UserPassword, DateOfBirth: DateOfBirth, Gender: Gender, Name: Name, PhoneNumber: PhoneNumber, Surname: Surname }} className="space-y-4 md:space-y-6" onSubmit={formSubmitHandle}>
+                {({ errors, touched }) => (
+                    <Form noValidate={true}>
+                        <div className="grid grid-cols-6 gap-6">
+                            <div className="col-span-6 sm:col-span-3">
+                                <div>
+                                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                                    <Field type="text" name="Name" id="Name" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Jane" />
+                                    {errors.Name && touched.Name ? <FieldValidationMessage Message={errors.Name} /> : null}
+                                </div>
+                            </div>
 
-                    <div className="col-span-6 sm:col-span-3">
-                        <div>
-                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Surname</label>
-                            <input onChange={(e) => store.setSurname(e.currentTarget.value)} value={store.Surname} type="email" name="surname" id="surname" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Smith" />
+                            <div className="col-span-6 sm:col-span-3">
+                                <div>
+                                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Surname</label>
+                                    <Field type="text" name="Surname" id="Surname" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Smith" />
+                                    {errors.Surname && touched.Surname ? <FieldValidationMessage Message={errors.Surname} /> : null}
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div>
-                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                    <input onChange={(e) => store.setEmail(e.currentTarget.value)} value={store.Email} type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" />
-                </div>
-                <div>
-                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                    <input onChange={(e) => store.setPassword(e.currentTarget.value)} value={store.Password} type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                </div>
-                <div>
-                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone number</label>
-                    <input onChange={(e) => store.setPhoneNumber(e.currentTarget.value)} value={store.PhoneNumber} type="email" name="phoneNumber" id="phoneNumber" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="0001112233" />
-                </div>
-                <div className="grid grid-cols-6 gap-6">
-                    <div className="col-span-6 sm:col-span-3">
-                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gender</label>
-                        <select
-                            value={store.Gender}
-                            id="gender"
-                            onChange={(e) => store.setGender(parseInt(e.currentTarget.value))}
-                            name="gender"
-                            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option value={1}>Kadın</option>
-                            <option value={2}>Erkek</option>
-                        </select>
-                    </div>
-                    <div className="col-span-6 sm:col-span-3">
-                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date of birth</label>
-                        <Datetime value={store.DateOfBirth} onChange={(e) => store.setDateOfBirth(e.toString())} inputProps={{ className: "bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" }} locale="" timeFormat={false} />
-                    </div>
-                </div>
-                <button type="submit" className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign up</button>
-            </form>
+                        <div>
+                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                            <Field type="email" name="UserEmail" id="UserEmail" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" />
+                            {errors.UserEmail && touched.UserEmail ? <FieldValidationMessage Message={errors.UserEmail} /> : null}
+                        </div>
+                        <div>
+                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                            <Field type="Password" name="UserPassword" id="UserPassword" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                            {errors.UserPassword && touched.UserPassword ? <FieldValidationMessage Message={errors.UserPassword} /> : null}
+                        </div>
+                        <div>
+                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone number</label>
+                            <Field type="text" name="PhoneNumber" id="PhoneNumber" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="0001112233" />
+                            {errors.PhoneNumber && touched.PhoneNumber ? <FieldValidationMessage Message={errors.PhoneNumber} /> : null}
+                        </div>
+                        <div className="grid grid-cols-6 gap-6">
+                            <div className="col-span-6 sm:col-span-3">
+                                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gender</label>
+                                <Field as={"select"}
+                                    id="Gender"
+                                    name="Gender"
+                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option value={1}>Kadın</option>
+                                    <option value={2}>Erkek</option>
+                                </Field>
+                                {errors.Gender && touched.Gender ? <FieldValidationMessage Message={errors.Gender} /> : null}
+                            </div>
+                            <div className="col-span-6 sm:col-span-3">
+                                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date of birth</label>
+                                <Field
+                                    name="DateOfBirth"
+                                    id="DateOfBirth"
+                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    render={() => (
+                                        <Datetime inputProps={{ className: "bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" }} locale="" timeFormat={false} />
+                                    )}/>
+                                {errors.DateOfBirth && touched.DateOfBirth ? <FieldValidationMessage Message={errors.DateOfBirth} /> : null}
+                            </div>
+                        </div>
+                        <br />
+                        <button type="submit" className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign up</button>
+                    </Form>
+                )}
+            </Formik>
         </ >
     )
 }
