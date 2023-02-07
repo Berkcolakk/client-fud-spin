@@ -74,5 +74,17 @@
     {
         "Key": "login.error.email.invalid",
         "Value": "Email is invalid"
+    },
+    {
+        "Key": "homepage.additem.lbl",
+        "Value": "Add item"
+    },
+    {
+        "Key": "homepage.deletell.lbl",
+        "Value": "Delete all"
+    },
+    {
+        "Key": "wheeladd.placeholder",
+        "Value": "Entry 1, Entry 2"
     }
 ]

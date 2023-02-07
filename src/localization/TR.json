@@ -58,5 +58,17 @@
     {
         "Key": "menu.profile",
         "Value": "Profil"
+    },
+    {
+        "Key": "homepage.additem.lbl",
+        "Value": "Ekle"
+    },
+    {
+        "Key": "homepage.deletell.lbl",
+        "Value": "Hepsini sil"
+    },
+    {
+        "Key": "wheeladd.placeholder",
+        "Value": "Kayıt 1, Kayıt 2"
     }
 ]
