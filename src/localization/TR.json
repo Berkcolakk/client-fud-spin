@@ -70,5 +70,41 @@
     {
         "Key": "wheeladd.placeholder",
         "Value": "Kayıt 1, Kayıt 2"
+    },
+    {
+        "Key": "signup.lbl",
+        "Value": "Kayıt ol"
+    },
+    {
+        "Key": "signup.dateofbirth.lbl",
+        "Value": "Doğum tarihi"
+    },
+    {
+        "Key": "signup.gender.lbl",
+        "Value": "Cinsiyet"
+    },
+    {
+        "Key": "signup.phonenumber.lbl",
+        "Value": "Telefon numarası"
+    },
+    {
+        "Key": "signup.password.lbl",
+        "Value": "Şifre"
+    },
+    {
+        "Key": "signup.email.lbl",
+        "Value": "Mail adres"
+    },
+    {
+        "Key": "signup.name.lbl",
+        "Value": "Ad"
+    },
+    {
+        "Key": "signup.surname.lbl",
+        "Value": "Soyad"
+    },
+    {
+        "Key": "signup.header.lbl",
+        "Value": "Hesabını oluştur"
     }
 ]

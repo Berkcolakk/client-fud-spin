@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from 'react';
-import { spinnerLog } from '@services/index';
+import { spinnerLog } from '@services/SpinnerService';
 import { IWheel } from '@interfaces/Wheels/WheelsInterfaces';
 import { getStorageItem } from '@utils/storageHash.utils';
 import UseFudSpinContext from "@/context/appContext";

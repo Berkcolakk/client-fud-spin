@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { FieldValidationMessage } from '@component/Helpers';
 import Translation from '@localization/Translation';
 import Link from "next/link";
-import { loginUser } from "@services/index";
+import { loginUser } from "@services/UserService";
 import { useRouter } from "next/navigation";
 import { ILoginDTO } from "@interfaces/Users/UsersInterfaces";
 import { getStorageItem, setCookieObjectHash } from '@utils/storageHash.utils';

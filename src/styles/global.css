@@ -3,114 +3,126 @@
 @tailwind utilities;
 
 :root {
-    --pie-size: 400px;
-    --pie-slice-spacing: 40px;
-    --pie-border-size: 5px;
-    --wheel-color: #A27B5C;
-    --neutral-color: #DDDDDD;
-    --pie-color: #DDDDDD;
-    --PI: 3.14159265358979;
-    --all-item-count: 0;
-    --pie: 0;
-    --selected-pie: 0;
-    --nb-turn: 10;
-    --spinning-duration: 5s;
-    --reset-duration: 0.50s;
+
+  --pie-size: 400px;
+  --pie-slice-spacing: 40px;
+  --pie-border-size: 5px;
+  --wheel-color: #A27B5C;
+  --neutral-color: #DDDDDD;
+  --pie-color: #DDDDDD;
+  --PI: 3.14159265358979;
+  --all-item-count: 0;
+  --pie: 0;
+  --selected-pie: 0;
+  --nb-turn: 10;
+  --spinning-duration: 3s;
+  --reset-duration: 0.30s;
+}
+
+@media (max-width:670px) {
+  :root {
+    --pie-size: 250px;
   }
-  
-  /* Conteneur de la roue = cercle rose extérieur */
-  .wheel-container {
-    width: calc(var(--pie-size) + 2 * var(--pie-border-size));
-    height: calc(var(--pie-size) + 2 * var(--pie-border-size));
+}
+@media (max-width:337px) {
+  :root {
+    --pie-size: 225px;
   }
-  
-  /* Triangle de sélection = 1 rose +  1 blanc */
-  .wheel-container::before,
-  .wheel-container::after {
-    content: '';
-    display: block;
-    position: absolute;
-    height: 0;
-    width: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 2;
-    border: solid transparent 20px;
-    border-left-width: 0;
-  }
-  
-  .wheel-container::before {
-    right: 0px;
-    border-right-color: var(--wheel-color);
-  }
-  
-  .wheel-container::after {
-    right: -5px;
-    border-right-color: var(--neutral-color);
-  }
-  
-  /* Roue */
-  .wheel {
-    margin: auto;
-    width: var(--pie-size);
-    height: var(--pie-size);
-    transition: transform var(--reset-duration);
-    transform: rotate(0deg);
-  }
-  
-  .wheel.spinning {
-    transition: transform var(--spinning-duration);
-    transform: rotate(calc(var(--nb-turn) * 360deg + (-360deg * var(--selected-pie) / var(--all-item-count, 1))));
-  }
-  
-  /* Centre de la roue = rond blanc au centre */
-  .wheel::after {
-    display: block;
-    position: absolute;
-    content: '';
-    background-color: var(--neutral-color);
-    width: 25px;
-    height: 25px;
-    z-index: 2;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-  }
-  
-  /* Element sur la roue */
-  .wheel-item {
-    transform-origin: center left;
-    transform: translateY(-50%) rotate(calc(var(--pie) * (360deg / var(--all-item-count, 1))));
-  }
-  
-  /* Background de l'élément = triangle rose plus clair */
-  .wheel-item:before {
-    content: ' ';
-    display: block;
-    position: absolute;
-    box-sizing: border-box;
-    z-index: -1;
-    width: 0;
-    height: 0;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding-left: 0px;
-    opacity: 0.25;
-  
-    /* 
+}
+
+/* Conteneur de la roue = cercle rose extérieur */
+.wheel-container {
+  width: calc(var(--pie-size) + 2 * var(--pie-border-size));
+  height: calc(var(--pie-size) + 2 * var(--pie-border-size));
+}
+
+/* Triangle de sélection = 1 rose +  1 blanc */
+.wheel-container::before,
+.wheel-container::after {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 0;
+  width: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  border: solid transparent 20px;
+  border-left-width: 0;
+}
+
+.wheel-container::before {
+  right: 0px;
+  border-right-color: var(--wheel-color);
+}
+
+.wheel-container::after {
+  right: -5px;
+  border-right-color: var(--neutral-color);
+}
+
+/* Roue */
+.wheel {
+  margin: auto;
+  width: var(--pie-size);
+  height: var(--pie-size);
+  transition: transform var(--reset-duration);
+  transform: rotate(0deg);
+}
+
+.wheel.spinning {
+  transition: transform var(--spinning-duration);
+  transform: rotate(calc(var(--nb-turn) * 360deg + (-360deg * var(--selected-pie) / var(--all-item-count, 1))));
+}
+
+/* Centre de la roue = rond blanc au centre */
+.wheel::after {
+  display: block;
+  position: absolute;
+  content: '';
+  background-color: var(--neutral-color);
+  width: 25px;
+  height: 25px;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+/* Element sur la roue */
+.wheel-item {
+  transform-origin: center left;
+  transform: translateY(-50%) rotate(calc(var(--pie) * (360deg / var(--all-item-count, 1))));
+}
+
+/* Background de l'élément = triangle rose plus clair */
+.wheel-item:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  box-sizing: border-box;
+  z-index: -1;
+  width: 0;
+  height: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding-left: 0px;
+  opacity: 0.25;
+
+  /* 
         Largeur du triangle
         Je ne sais pas pourquoi j'ai besoin d'ajouter 
           " + var(--pie-size) / 2 " dans slice-max-width  ==> donne 2.PI.R + R
         mais globalement ca marche a peu près bien 
         TODO: A étudier 
       */
-    --slice-max-width: calc(var(--PI) * var(--pie-size) + var(--pie-size) / 2);
-    --slice-width: calc((var(--slice-max-width) / var(--all-item-count)) - var(--pie-slice-spacing));
-    border: solid transparent calc(var(--slice-width) / 2);
-    border-left: solid transparent 0;
-    /* profondeur du triangle = du centre de la roue à la bordure = 300px / 2 */
-    border-right: solid var(--pie-color) calc(var(--pie-size) / 2);
-  
-  }
+  --slice-max-width: calc(var(--PI) * var(--pie-size) + var(--pie-size) / 2);
+  --slice-width: calc((var(--slice-max-width) / var(--all-item-count)) - var(--pie-slice-spacing));
+  border: solid transparent calc(var(--slice-width) / 2);
+  border-left: solid transparent 0;
+  /* profondeur du triangle = du centre de la roue à la bordure = 300px / 2 */
+  border-right: solid var(--pie-color) calc(var(--pie-size) / 2);
+
+}

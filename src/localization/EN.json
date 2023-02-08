@@ -86,5 +86,41 @@
     {
         "Key": "wheeladd.placeholder",
         "Value": "Entry 1, Entry 2"
+    },
+    {
+        "Key": "signup.lbl",
+        "Value": "Sign up"
+    },
+    {
+        "Key": "signup.dateofbirth.lbl",
+        "Value": "Date of birth"
+    },
+    {
+        "Key": "signup.gender.lbl",
+        "Value": "Gender"
+    },
+    {
+        "Key": "signup.phonenumber.lbl",
+        "Value": "Phone number"
+    },
+    {
+        "Key": "signup.password.lbl",
+        "Value": "Password"
+    },
+    {
+        "Key": "signup.email.lbl",
+        "Value": "Email"
+    },
+    {
+        "Key": "signup.name.lbl",
+        "Value": "Name"
+    },
+    {
+        "Key": "signup.surname.lbl",
+        "Value": "Surname"
+    },
+    {
+        "Key": "signup.header.lbl",
+        "Value": "Create an account"
     }
 ]
