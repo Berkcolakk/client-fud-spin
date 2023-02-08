@@ -7,7 +7,6 @@ import { IUser } from '@interfaces/Users/UsersInterfaces';
 import { IMenu } from '@interfaces/MenusInterfaces/MenusInterfaces';
 import { GetAuthorizedMenu, GetUnAuthorizedMenu } from '@/data/MenuList';
 import { getUser } from '@utils/getUser.utils';
-import { v4 as uuidv4 } from 'uuid';
 import EN from '@localization/EN.json';
 import TR from '@localization/TR.json';
 
@@ -54,27 +53,27 @@ export const FudSpinProvider = ({ children }: IFudSpinProvider) => {
     /**Spinner states. */
     const DefaultSpinnerList = [
         {
-            id: uuidv4(),
+            id: "74be9ae3-fcaa-4c77-beee-fea6f728d66f",
             name: "Pizzas",
             color: "#AA5656"
         },
         {
-            id: uuidv4(),
+            id: "8b0d534e-cea8-4615-8d8e-a74812e77b6a",
             name: "Hamburger",
             color: "#FFEA20"
         },
         {
-            id: uuidv4(),
+            id: "1f9601fd-2846-420e-8ff6-d74284732d84",
             name: "Pastas",
             color: "#CD0404"
         },
         {
-            id: uuidv4(),
+            id: "163aad18-a427-4877-9669-ae5e6eec1eaa",
             name: "Risotto",
             color: "#A31ACB"
         },
         {
-            id: uuidv4(),
+            id: "c54fc70a-5438-4e0d-b2e0-1ed32dcf1ac5",
             name: "Doner",
             color: "#FF6E31"
         }

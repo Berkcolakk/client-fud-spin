@@ -5,7 +5,7 @@ import { faTrashAlt, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 import { v4 as uuidv4 } from 'uuid';
 import SpinnerList from './SpinnerList';
 import Translation from '@localization/Translation';
-
+import Button from "../Helpers/Button";
 
 /**
  * Author: @Berkcolakk
@@ -49,10 +49,10 @@ const SpinnerAdd = () => {
         <div className='py-4 p-4 border border-gray-200 rounded-lg  dark:bg-gray-900 dark:border-gray-700 w-full self-start'>
             <div className='flex-auto flex'>
                 <input type="text" className="block w-full p-2 text-xs text-gray-900 border border-gray-300 rounded-md bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={lang("wheeladd.placeholder")} onChange={(e) => SetSpinnerWheelName(e.currentTarget.value)} required value={SpinnerWheelName} />
-                <button type="submit" className="p-4 text-white text-xs bg-gray-900 hover:bg-gray-800 focus:ring-4 focus:outline-none rounded-xl focus:ring-blue-300 font-medium px-2 py-1 dark:bg-primaryColor dark:hover:bg-primary-600 dark:focus:ring-blue-800" onClick={AddItem}>{lang("homepage.additem.lbl")}</button>
+                <Button Name="homepage.additem.lbl" OnClick={AddItem} ClassName="p-4 text-white text-xs bg-gray-900 hover:bg-gray-800 focus:ring-4 focus:outline-none rounded-xl focus:ring-blue-300 font-medium px-2 py-1 dark:bg-primaryColor dark:hover:bg-primary-600 dark:focus:ring-blue-800" />
             </div>
-            <button className='text-white bg-red-800 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg text-sm px-2 dark:bg-red-500 dark:hover:bg-red-700 dark:focus:ring-red-800' onClick={allRemove}>{lang("homepage.deletell.lbl")}
-            </button>
+            <Button Name="homepage.deletell.lbl" OnClick={allRemove} ClassName={"p-4 text-white text-xs bg-red-800 hover:bg-red-900 focus:ring-4 focus:outline-none rounded-xl font-medium px-2 py-1 dark:bg-red dark:hover:bg-red-900 "} />
+
             <SpinnerList />
         </div>
     )

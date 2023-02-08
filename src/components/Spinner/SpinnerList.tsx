@@ -2,11 +2,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import UseFudSpinContext from "@/context/appContext";
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import 'react-perfect-scrollbar/dist/css/styles.css';
-import PerfectScrollbar from 'react-perfect-scrollbar'
+import PerfectScrollbar from 'react-perfect-scrollbar';
+import Button from "../Helpers/Button";
 const SpinnerList = () => {
     const { Spinners, SetSpinners, SetSpinnerSelectedItem } = UseFudSpinContext();
-    const removeItem = (removedItem: string) => {
-        const newList = Spinners.filter((item) => { return item.id !== removedItem });
+    const removeItem = (e: any) => {
+        const newList = Spinners.filter((item) => { return item.id !== e.currentTarget.dataset.id });
         SetSpinners(newList);
         SetSpinnerSelectedItem(null);
     }
@@ -23,9 +24,7 @@ const SpinnerList = () => {
                                             {item.name}
                                         </p>
                                     </div>
-                                    <button className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white" onClick={() => removeItem(item.id)}>
-                                        <FontAwesomeIcon icon={faTrashAlt} />
-                                    </button>
+                                    <Button RowID={item.id} Children={<FontAwesomeIcon icon={faTrashAlt} />} ClassName="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white" OnClick={removeItem} Name="" />
                                 </div>
                             </li>
                         ))}
