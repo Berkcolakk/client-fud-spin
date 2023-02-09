@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.WheelDiv {
+  text-align: -webkit-center;
+}
+
 :root {
 
   --pie-size: 400px;
@@ -24,6 +28,7 @@
     --pie-size: 250px;
   }
 }
+
 @media (max-width:337px) {
   :root {
     --pie-size: 225px;

@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { ILoginDTO } from "@interfaces/Users/UsersInterfaces";
 import { getStorageItem, setCookieObjectHash } from '@utils/storageHash.utils';
 import UseFudSpinContext from "@/context/appContext";
+import Button from "@component/Helpers/Button";
 UseFudSpinContext
 const AuthLogin = () => {
     const navigate = useRouter();
@@ -60,7 +61,7 @@ const AuthLogin = () => {
                             </div>
                             <Link href="" className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">{lang("login.password.forgot.lbl")}</Link>
                         </div>
-                        <button type="submit" className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">{lang("login.signin.lbl")}</button>
+                        <Button ClassName="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" Name="login.signin.lbl" Type={"submit"}  />
                         <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                             {lang("login.dont.yet.account.lbl")}  <Link href="/Register" className="font-medium text-primary-600 hover:underline dark:text-primary-500">{lang("login.signup.lbl")}</Link>
                         </p>

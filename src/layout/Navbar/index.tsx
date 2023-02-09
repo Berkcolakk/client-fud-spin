@@ -8,6 +8,8 @@ import Image from 'next/image';
 import { GenerateProfileMenu, ProfileMenuButton } from './ProfileMenu';
 import { Menu } from '@headlessui/react';
 import UseFudSpinContext from "@/context/appContext";
+import Button from '@component/Helpers/Button';
+
 export const Navbar = () => {
     const { MobileNav, SetMobileNav, DarkTheme, SetDarkTheme } = UseFudSpinContext();
 
@@ -75,18 +77,14 @@ export const Navbar = () => {
                 <div className="flex items-center md:order-2">
                     <Menu as="div" className="relative inline-block text-left">
                         <div>
-                            <button type='button' className='text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer' onClick={(e) => themeChangeHandle(e)}>
-                                {!DarkTheme ? <FontAwesomeIcon icon={faMoon} size='xl' />
-                                    : <FontAwesomeIcon icon={faLightbulb} size='xl' />
-                                }
-                            </button>
+                            <Button ClassName='text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer' OnClick={themeChangeHandle}
+                                Children={!DarkTheme ? <FontAwesomeIcon icon={faMoon} size='xl' />
+                                    : <FontAwesomeIcon icon={faLightbulb} size='xl' />} Name="" />
                             <ProfileMenuButton />
                         </div>
                         <GenerateProfileMenu />
                     </Menu>
-                    <button onClick={handleNav} type="button" className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
-                        <FontAwesomeIcon icon={faBars} size='xl' />
-                    </button>
+                    <Button Type={"button"} ClassName="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" OnClick={handleNav} Children={<FontAwesomeIcon icon={faBars} size='xl' />} Name="" />
                 </div>
                 <div className={MobileNav ? "items-center justify-between w-full md:flex md:w-auto md:order-1" : "items-center justify-between hidden w-full md:flex md:w-auto md:order-1"}>
                     <GenerateMenuList />
