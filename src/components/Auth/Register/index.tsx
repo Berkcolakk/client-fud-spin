@@ -24,8 +24,10 @@ const AuthRegister = () => {
     const formSubmitHandle = async (values: IRegisterDTO,
         { setSubmitting }: FormikHelpers<IRegisterDTO>) => {
         setSubmitting(false);
+        debugger;
         values.DateOfBirth = DateOfBirth;
-        console.log(values);
+       const data = await registerUser(values);
+       console.log(data);
     }
     const CustomInputComponent = (props: any) => (
         <Datetime onChange={(e: any) => { SetDateOfBirth(e.format("DD/MM/yyyy")) }} closeOnSelect={true} inputProps={{

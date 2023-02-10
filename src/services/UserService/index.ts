@@ -6,14 +6,14 @@ import { ILoginDTO,IRegisterDTO } from "@interfaces/Users/UsersInterfaces";
 import api from '@services/BaseService';
 export const registerUser = async (user: IRegisterDTO) => {
     try {
-        return await (await api({ Url: userRegisterEndpoint, Body: user, Method: "POST" })).json();
+        return await (await api({ Url: userRegisterEndpoint, Body: JSON.stringify(user), Method: "POST" })).json();
     } catch (error) {
         console.error(error);
     }
 };
 export const loginUser = async (user: ILoginDTO) => {
     try {
-        return await (await api({ Url: userLoginEndpoint, Body: user, Method: "PUT" })).json();
+        return await (await api({ Url: userLoginEndpoint, Body: JSON.stringify(user), Method: "PUT" })).json();
     } catch (error) {
         console.error(error);
     }

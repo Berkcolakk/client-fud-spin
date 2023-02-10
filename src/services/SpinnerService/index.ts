@@ -15,7 +15,7 @@ export const getAllSpinnerData = async () => {
 
 export const spinnerLog = async (obj: any) => { // Changed the name of the function to be more descriptive 
     try {
-        return await (await api({ Url: spinnerLogEndpoint, Body: obj, Method: "POST" })).json();
+        return await (await api({ Url: spinnerLogEndpoint, Body: JSON.stringify(obj), Method: "POST" })).json();
     } catch (error) {
         console.error(error);
     }
