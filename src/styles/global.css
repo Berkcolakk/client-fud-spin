@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 .WheelDiv {
   text-align: -webkit-center;
 }

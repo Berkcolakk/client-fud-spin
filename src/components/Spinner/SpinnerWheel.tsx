@@ -15,6 +15,10 @@ const SpinnerWheel = () => {
         // "--wheel-color":themeColor
     };
     const SelectedHandle = async () => {
+        if (Spinners.length < parseInt(process.env.NEXT_PUBLIC_MIN_WHEEL_COUNT || "6")) {
+            alert("Items'lar 6 veya daha fazla olmalıdır.")
+            return;
+        }
         if (SpinnerSelectedItem === null) {
             const random = Math.floor(Math.random() * Spinners.length);
             SetSpinnerSelectedItem(random);
