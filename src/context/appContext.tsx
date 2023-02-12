@@ -103,7 +103,7 @@ export const FudSpinProvider = ({ children }: IFudSpinProvider) => {
     /**Login && Register states. */
 
     /**Language states */
-    const [CurrentLanguage, SetCurrentLanguage] = useState<any>([]);
+    const [CurrentLanguage, SetCurrentLanguage] = useState<string>();
 
     const [CurrentLanguageList, SetCurrentLanguageList] = useState<any>([]);
     /**Language states */
@@ -126,7 +126,8 @@ export const FudSpinProvider = ({ children }: IFudSpinProvider) => {
         const { authUser, isValid } = getUser();
         SetIsAuth(isValid);
         SetAuthObj(authUser);
-        SetCurrentLanguage(authUser?.Language || "EN");
+        const BrowserLang = navigator.language.split('-')[0].toUpperCase();
+        SetCurrentLanguage(BrowserLang || "EN");
     }, [])
     useEffect(() => {
         switch (CurrentLanguage) {
