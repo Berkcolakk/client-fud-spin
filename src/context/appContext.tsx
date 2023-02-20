@@ -76,6 +76,11 @@ export const FudSpinProvider = ({ children }: IFudSpinProvider) => {
             id: "c54fc70a-5438-4e0d-b2e0-1ed32dcf1ac5",
             name: "Doner",
             color: "#FF6E31"
+        },
+        {
+            id: "39b1650e-4a7c-425b-b6b8-830da8924abd",
+            name: "Chicken Taco",
+            color: "#2B3467"
         }
     ]
     const [Spinners, SetSpinners] = useState<Array<IWheel>>(DefaultSpinnerList);
