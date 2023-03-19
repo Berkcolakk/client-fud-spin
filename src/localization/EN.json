@@ -122,5 +122,17 @@
     {
         "Key": "signup.header.lbl",
         "Value": "Create an account"
+    },
+    {
+        "Key":"wheel.title.congrats.lbl",
+        "Value":"Congrats!"
+    },
+    {
+        "Key":"close.lbl",
+        "Value":"Close"
+    },
+    {
+        "Key":"wheel.content.congrats.lbl",
+        "Value":"Congrats! {wheelName} selected."
     }
 ]

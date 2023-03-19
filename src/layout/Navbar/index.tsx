@@ -9,7 +9,7 @@ import { GenerateProfileMenu, ProfileMenuButton } from './ProfileMenu';
 import { Menu } from '@headlessui/react';
 import UseFudSpinContext from "@/context/appContext";
 import Button from '@component/Helpers/Button';
-
+import Logo from '@layout/Navbar/Logo';
 export const Navbar = () => {
     const { MobileNav, SetMobileNav, DarkTheme, SetDarkTheme } = UseFudSpinContext();
 
@@ -65,15 +65,7 @@ export const Navbar = () => {
     return (
         <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
             <div className="container flex flex-wrap items-center justify-between mx-auto">
-                <Link href="/" className="flex items-center">
-                    <Image
-                        src="/logo.svg"
-                        alt="logo"
-                        width={100}
-                        height={100}
-                        className="w-52 h-20 mx-auto" priority={true}
-                    />
-                </Link>
+                <Logo />
                 <div className="flex items-center md:order-2">
                     <Menu as="div" className="relative inline-block text-left">
                         <div>

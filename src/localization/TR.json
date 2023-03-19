@@ -106,5 +106,17 @@
     {
         "Key": "signup.header.lbl",
         "Value": "Hesabını oluştur"
+    },
+    {
+        "Key":"wheel.title.congrats.lbl",
+        "Value":"Tebrikler!"
+    },
+    {
+        "Key":"close.lbl",
+        "Value":"Kapat"
+    },
+    {
+        "Key":"wheel.content.congrats.lbl",
+        "Value":"Tebrikler! {wheelName} seçilmiştir."
     }
 ]
