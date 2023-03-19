@@ -43,7 +43,7 @@ const GenerateProfileMenu = () => {
         return <></>
     }
     const handleProfileMenuClick = (e: any) => {
-        if (e.currentTarget.innerText == "Logout") {
+        if (e.currentTarget.innerText == "Logout" || e.currentTarget.innerText == "Çıkış") {
             removeCookies("auth")
             navigate.push("/");
             SetIsAuth(false);
