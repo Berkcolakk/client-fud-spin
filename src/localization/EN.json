@@ -134,5 +134,9 @@
     {
         "Key":"wheel.content.congrats.lbl",
         "Value":"Congrats! {wheelName} selected."
+    },
+    {
+        "Key":"UserName.Password.Invalid",
+        "Value":"Username or password is incorrect."
     }
 ]

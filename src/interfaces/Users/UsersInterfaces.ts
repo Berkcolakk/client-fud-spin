@@ -20,3 +20,7 @@ export interface IRegisterDTO {
     Gender: number;
     DateOfBirth: string;
 }
+export interface IAPILoginDTO {
+    UserName: string;
+    Password: string;
+}

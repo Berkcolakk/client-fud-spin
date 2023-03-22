@@ -27,7 +27,6 @@ const AuthRegister = () => {
         debugger;
         values.DateOfBirth = DateOfBirth;
        const data = await registerUser(values);
-       console.log(data);
     }
     const CustomInputComponent = (props: any) => (
         <Datetime onChange={(e: any) => { SetDateOfBirth(e.format("DD/MM/yyyy")) }} closeOnSelect={true} inputProps={{

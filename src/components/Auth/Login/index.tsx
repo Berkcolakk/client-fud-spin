@@ -11,11 +11,12 @@ import { ILoginDTO } from "@interfaces/Users/UsersInterfaces";
 import { getStorageItem, setCookieObjectHash } from '@utils/storageHash.utils';
 import UseFudSpinContext from "@/context/appContext";
 import Button from "@component/Helpers/Button";
-UseFudSpinContext
+import Modal from "@component/Helpers/Modal";
+
 const AuthLogin = () => {
     const navigate = useRouter();
     const { lang } = Translation();
-    const { UserEmail, UserPassword, SetIsAuth, SetAuthObj } = UseFudSpinContext();
+    const { UserEmail, UserPassword, SetIsAuth, SetAuthObj, IsError, SetIsError, Title, SetTitle } = UseFudSpinContext();
     const SignupSchema = Yup.object().shape({
         Password: Yup.string()
             .max(20, lang("login.error.max.length"))
@@ -27,16 +28,25 @@ const AuthLogin = () => {
         { setSubmitting }: FormikHelpers<ILoginDTO>) => {
         setSubmitting(false);
         const data = await loginUser(values);
+        if (data.Error && data.ErrorMessage != "") {
+            SetIsError(true);
+            SetTitle(lang(data.ErrorMessage))
+            return;
+        }
         setCookieObjectHash("auth", data, 30)
         SetAuthObj(true);
         SetIsAuth(data);
         navigate.push("/")
+    }
+    const ModalCloseHandle = () => {
+        SetIsError(false)
     }
     return (
         <>
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 {lang("login.signin.lbl")}
             </h1>
+            <Modal IsShow={IsError} Title={Title} CloseHandle={ModalCloseHandle} Content={""} />
             <Formik validationSchema={SignupSchema} initialValues={{ Email: UserEmail, Password: UserPassword }} className="space-y-4 md:space-y-6" onSubmit={formSubmitHandle}>
                 {({ errors, touched }) => (
                     <Form noValidate={true}>
@@ -61,7 +71,7 @@ const AuthLogin = () => {
                             </div>
                             <Link href="" className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">{lang("login.password.forgot.lbl")}</Link>
                         </div>
-                        <Button ClassName="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" Name="login.signin.lbl" Type={"submit"}  />
+                        <Button ClassName="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" Name="login.signin.lbl" Type={"submit"} />
                         <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                             {lang("login.dont.yet.account.lbl")}  <Link href="/Register" className="font-medium text-primary-600 hover:underline dark:text-primary-500">{lang("login.signup.lbl")}</Link>
                         </p>

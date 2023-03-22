@@ -3,7 +3,7 @@
 // Refactored code: 
 import { getUser } from "@/utils/getUser.utils";
 import { getAllSpinnerDataEndpoint, spinnerLogEndpoint } from '@utils/apiCostant.utils';
-import api from '@services/BaseService';
+import {api} from '@services/BaseService';
 
 export const getAllSpinnerData = async () => {
     try {

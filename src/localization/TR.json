@@ -118,5 +118,9 @@
     {
         "Key":"wheel.content.congrats.lbl",
         "Value":"Tebrikler! {wheelName} seçilmiştir."
+    },
+    {
+        "Key":"UserName.Password.Invalid",
+        "Value":"Kullanıcı adı veya şifre hatalıdır."
     }
 ]

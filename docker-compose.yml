@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  project-name:
+    image: project-name
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: project-name
+    restart: always
+    volumes:
+      - ./:/app
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - "3000:3000"
