@@ -33,9 +33,10 @@ const AuthLogin = () => {
             SetTitle(lang(data.ErrorMessage))
             return;
         }
-        setCookieObjectHash("auth", data, 30)
-        SetAuthObj(true);
-        SetIsAuth(data);
+        debugger;
+        setCookieObjectHash("auth", data.Data, 30)
+        SetAuthObj(data.Data);
+        SetIsAuth(true);
         navigate.push("/")
     }
     const ModalCloseHandle = () => {
@@ -47,13 +48,13 @@ const AuthLogin = () => {
                 {lang("login.signin.lbl")}
             </h1>
             <Modal IsShow={IsError} Title={Title} CloseHandle={ModalCloseHandle} Content={""} />
-            <Formik validationSchema={SignupSchema} initialValues={{ Email: UserEmail, Password: UserPassword }} className="space-y-4 md:space-y-6" onSubmit={formSubmitHandle}>
+            <Formik validationSchema={SignupSchema} initialValues={{ UserName: UserEmail, Password: UserPassword }} className="space-y-4 md:space-y-6" onSubmit={formSubmitHandle}>
                 {({ errors, touched }) => (
                     <Form noValidate={true}>
                         <div>
                             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{lang("login.email.lbl")}</label>
                             <Field name="Email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" type="email" id="Email" />
-                            {errors.Email && touched.Email ? <FieldValidationMessage Message={errors.Email} /> : null}
+                            {errors.UserName && touched.UserName ? <FieldValidationMessage Message={errors.UserName} /> : null}
                         </div>
                         <div>
                             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{lang("login.password.lbl")}</label>

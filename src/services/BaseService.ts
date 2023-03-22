@@ -1,3 +1,4 @@
+import { getUser } from "@utils/getUser.utils";
 interface IApi {
   Url: string;
   Body: any;
@@ -5,12 +6,14 @@ interface IApi {
 }
 
 const api = async ({ Url, Body, Method }: IApi) => {
+  debugger;
+  const { authUser } = getUser();
   return await fetch(`${process.env.NEXT_PUBLIC_HOST}${Url}`, {
     cache: "no-store",
     method: Method,
     body: Body,
     headers: {
-      Autorization: "ASDASFAZAMAZQVQVZAYRAZ."
+      Autorization: authUser,
     },
   });
 };
@@ -22,8 +25,8 @@ const realApi = async ({ Url, Body, Method }: IApi) => {
     body: Body,
     headers: {
       "Content-Type": "application/json",
-      Autorization: "ASDASFAZAMAZQVQVZAYRAZ."
-    }
+      Autorization: "ASDASFAZAMAZQVQVZAYRAZ.",
+    },
   });
 };
 export { api, realApi };

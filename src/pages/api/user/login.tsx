@@ -8,10 +8,9 @@ export default async function handler(
     res: NextApiResponse
 ) {
     const LoginProp: ILoginDTO = JSON.parse(req.body);
-    const data =await loginUserWithApi({
+    const data = await loginUserWithApi({
         UserName: LoginProp.Email,
         Password: LoginProp.Password
     });
-    console.log(data);
     res.status(200).json(data)
 }

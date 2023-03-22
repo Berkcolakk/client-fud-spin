@@ -1,5 +1,5 @@
 export interface ILoginDTO {
-    Email: string;
+    UserName: string;
     Password: string;
 }
 export interface IUser {
@@ -19,8 +19,4 @@ export interface IRegisterDTO {
     UserPassword: string;
     Gender: number;
     DateOfBirth: string;
-}
-export interface IAPILoginDTO {
-    UserName: string;
-    Password: string;
 }
