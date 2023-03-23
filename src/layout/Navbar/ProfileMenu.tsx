@@ -12,13 +12,12 @@ import { useRouter } from "next/navigation";
 import { removeCookies } from '@utils/storageHash.utils';
 import useTranslation from '@localization/Translation';
 const ProfileMenuButton = () => {
-    const [loading, setLoading] = useState(true);
-    const { IsAuth } = UseFudSpinContext();
+    const { IsAuth,Loading,SetLoading } = UseFudSpinContext();
     useEffect(() => {
-        setLoading(false);
+        SetLoading(false);
     }, [])
-    if (loading) {
-        return <LoadingBox />
+    if (Loading) {
+        return <></>
     }
     return (
         IsAuth ?
@@ -34,12 +33,11 @@ interface IGenerateProfileMenuProps {
 const GenerateProfileMenu = () => {
     const { lang } = useTranslation();
     const navigate = useRouter();
-    const { ProfileMenuList, SetIsAuth, SetAuthObj } = UseFudSpinContext();
-    const [loading, setLoading] = useState(true);
+    const { ProfileMenuList, SetIsAuth, SetAuthObj,SetLoading,Loading } = UseFudSpinContext();
     useEffect(() => {
-        setLoading(false);
+        SetLoading(false);
     }, [])
-    if (loading) {
+    if (Loading) {
         return <></>
     }
     const handleProfileMenuClick = (e: any) => {

@@ -9,7 +9,7 @@ export default async function handler(
 ) {
     const LoginProp: ILoginDTO = JSON.parse(req.body);
     const data = await loginUserWithApi({
-        UserName: LoginProp.Email,
+        UserName: LoginProp.UserName,
         Password: LoginProp.Password
     });
     res.status(200).json(data)

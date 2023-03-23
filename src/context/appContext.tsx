@@ -46,10 +46,12 @@ interface IContext {
     SetDateOfBirth: any;
     SetIsError: any;
     IsError: boolean;
-    Title:string;
-    SetTitle:any;
-    Content:string;
-    SetContent:any;
+    Title: string;
+    SetTitle: any;
+    Content: string;
+    SetContent: any;
+    Loading: boolean;
+    SetLoading: any;
 }
 const FudSpinContext = createContext<IContext>({});
 interface IFudSpinProvider {
@@ -59,8 +61,9 @@ export const FudSpinProvider = ({ children }: IFudSpinProvider) => {
     const [IsError, SetIsError] = useState<boolean>(false);
     const [Title, SetTitle] = useState<string>("");
     const [Content, SetContent] = useState<string>("");
+    const [Loading, SetLoading] = useState<boolean>(false);
     /**Spinner states. */
-    
+
 
     const DefaultSpinnerList = [
         {
@@ -198,7 +201,9 @@ export const FudSpinProvider = ({ children }: IFudSpinProvider) => {
             Title,
             SetTitle,
             Content,
-            SetContent
+            SetContent,
+            Loading,
+            SetLoading
         }}>{children}
         </FudSpinContext.Provider>);
 }

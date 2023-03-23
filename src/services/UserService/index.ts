@@ -7,11 +7,11 @@ import {
 } from "@utils/apiCostant.utils";
 import { ILoginDTO, IRegisterDTO } from "@interfaces/Users/UsersInterfaces";
 
-import { api, realApi } from "@services/BaseService";
+import { api, fakeApi } from "@services/BaseService";
 export const registerUser = async (user: IRegisterDTO) => {
   try {
     return await (
-      await api({
+      await fakeApi({
         Url: userRegisterEndpoint,
         Body: JSON.stringify(user),
         Method: "POST",
@@ -24,7 +24,7 @@ export const registerUser = async (user: IRegisterDTO) => {
 export const loginUser = async (user: ILoginDTO) => {
   try {
     return await (
-      await api({
+      await fakeApi({
         Url: userLoginEndpoint,
         Body: JSON.stringify(user),
         Method: "PUT",
@@ -38,7 +38,7 @@ export const loginUser = async (user: ILoginDTO) => {
 export const loginUserWithApi = async (user: ILoginDTO) => {
   try {
     return await (
-      await realApi({
+      await api({
         Url: userLoginApiEndpoint,
         Body: JSON.stringify(user),
         Method: "POST",

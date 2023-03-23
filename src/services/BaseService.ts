@@ -5,8 +5,7 @@ interface IApi {
   Method: string;
 }
 
-const api = async ({ Url, Body, Method }: IApi) => {
-  debugger;
+const fakeApi = async ({ Url, Body, Method }: IApi) => {
   const { authUser } = getUser();
   return await fetch(`${process.env.NEXT_PUBLIC_HOST}${Url}`, {
     cache: "no-store",
@@ -17,8 +16,7 @@ const api = async ({ Url, Body, Method }: IApi) => {
     },
   });
 };
-const realApi = async ({ Url, Body, Method }: IApi) => {
-  console.log(Body);
+const api = async ({ Url, Body, Method }: IApi) => {
   return await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}${Url}`, {
     cache: "no-store",
     method: Method,
@@ -29,4 +27,4 @@ const realApi = async ({ Url, Body, Method }: IApi) => {
     },
   });
 };
-export { api, realApi };
+export { fakeApi, api };
