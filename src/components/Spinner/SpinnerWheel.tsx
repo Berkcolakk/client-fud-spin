@@ -9,9 +9,9 @@ import useTranslation from "@localization/Translation";
 const SpinnerWheel = () => {
     const { Spinners, SetSpinners, SetSpinnerSelectedItem, SpinnerSelectedItem } = UseFudSpinContext();
     const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
-    const [modalContent,setModalContent] = useState<string>("");
+    const [modalContent, setModalContent] = useState<string>("");
     const { lang } = useTranslation();
-    
+
     // const themeColor = localStorage.getItem("theme") == "dark" ? "#A27B5C" : "#E1D7C6"
     const spinning = SpinnerSelectedItem !== null ? "spinning" : "";
     const wheelVars = {
@@ -29,9 +29,11 @@ const SpinnerWheel = () => {
             SetSpinnerSelectedItem(random);
             const spinner = { spinnerList: Spinners, selectedPie: Spinners[random] }
             const data = await spinnerLog(spinner);
+
             setTimeout(() => {
                 setModalIsOpen(true)
-                setModalContent(lang("wheel.content.congrats.lbl").replace("{wheelName}", Spinners[SpinnerSelectedItem]?.name))
+                setModalContent(lang("wheel.content.congrats.lbl").replace("{wheelName}", Spinners[random]?.name))
+                debugger;
             }, 3000);
         } else {
             SetSpinnerSelectedItem(null);

@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import SpinnerList from './SpinnerList';
 import Translation from '@localization/Translation';
 import Button from "../Helpers/Button";
+import { useEffect, useRef } from "react";
 
 /**
  * Author: @Berkcolakk
@@ -14,6 +15,10 @@ import Button from "../Helpers/Button";
 const SpinnerAdd = () => {
     const { lang } = Translation();
     const { Spinners, SetSpinners, SpinnerWheelName, SetSpinnerWheelName, SetSpinnerSelectedItem } = UseFudSpinContext();
+    const WheelNameRef = useRef<HTMLInputElement>(null);
+    useEffect(() => {
+        WheelNameRef?.current?.focus();
+    }, [])
     const AddItem = (e: any) => {
         let colorArr = ["#AA5656", "#B99B6B", "#698269", "#F94A29", "#FCE22A", "#30E3DF", "#D61355"];
         if (!SpinnerWheelName || Spinners.some(item => item.name.trim() === SpinnerWheelName.trim())) {
@@ -48,7 +53,7 @@ const SpinnerAdd = () => {
     return (
         <div className='py-4 p-4 border border-gray-200 rounded-lg  dark:bg-gray-900 dark:border-gray-700 w-full self-start'>
             <div className='flex-auto flex'>
-                <input type="text" className="block w-full p-2 text-xs text-gray-900 border border-gray-300 rounded-md bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={lang("wheeladd.placeholder")} onChange={(e) => SetSpinnerWheelName(e.currentTarget.value)} required value={SpinnerWheelName} />
+                <input ref={WheelNameRef} type="text" className="block w-full p-2 text-xs text-gray-900 border border-gray-300 rounded-md bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={lang("wheeladd.placeholder")} onChange={(e) => SetSpinnerWheelName(e.currentTarget.value)} required value={SpinnerWheelName} />
                 <Button Name="homepage.additem.lbl" OnClick={AddItem} ClassName="p-4 text-white text-xs bg-gray-900 hover:bg-gray-800 focus:ring-4 focus:outline-none rounded-xl focus:ring-blue-300 font-medium px-2 py-1 dark:bg-primaryColor dark:hover:bg-primary-600 dark:focus:ring-blue-800" Type={"button"} />
             </div>
             <Button Name="homepage.deletell.lbl" OnClick={allRemove} ClassName={"p-4 text-white text-xs bg-red-800 hover:bg-red-900 focus:ring-4 focus:outline-none rounded-xl font-medium px-2 py-1 dark:bg-red dark:hover:bg-red-900"} Type={"button"} />
