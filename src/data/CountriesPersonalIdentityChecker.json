@@ -1,0 +1,111 @@
+{
+  "US": "^\d{3}-\d{2}-\d{4}$", // United States
+  "GB": "^(?!BG|GB00)\d{6}([A-Z]{2})?$", // United Kingdom
+  "CA": "^\d{3}-\d{3}-\d{3}$", // Canada
+  "AU": "^\d{9}$", // Australia
+  "NZ": "^\d{8}$", // New Zealand
+  "JP": "^\d{3}-\d{2}-\d{4}$", // Japan
+  "CN": "^\d{18}$|^\d{17}(\d|X|x)$", // China
+  "KR": "^\d{6}-\d{7}$", // South Korea
+  "TW": "^[A-Z]\d{9}$", // Taiwan
+  "SG": "^\d{7}[A-Z]$|^\d{8}$", // Singapore
+  "MY": "^\d{6}-\d{2}-\d{4}$", // Malaysia
+  "TH": "^\d{13}$", // Thailand
+  "ID": "^\d{16}$", // Indonesia
+  "PH": "^\d{4}-\d{7}-\d{2}$", // Philippines
+  "IN": "^\d{4}\s\d{4}\s\d{4}$|^\d{12}$", // India
+  "AE": "^\d{3}-\d{4}-\d{7}-\d{1}$", // United Arab Emirates
+  "SA": "^\d{10}$", // Saudi Arabia
+  "TR": "^\d{11}$", // Turkey
+  "DE": "^\d{11}$", // Germany
+  "FR": "^\d{2}\s\d{2}\s\d{5}\s\d{3}\s\d{2}$", // France
+  "IT": "^\w{2}\s\d{2}\s\d{5}\s\d{3}\s\w{1}$", // Italy
+  "ES": "^\d{8}[A-Z]$|^[A-Z]\d{7}[A-Z]$|^([A-Z]\d{8})$", // Spain
+  "PT": "^\d{8}$", // Portugal
+  "NL": "^\d{9}$|^\d{3}\s\d{2}\s\d{2}\s\d{3}$", // Netherlands
+  "BE": "^\d{11}$", // Belgium
+  "AT": "^\d{9}$", // Austria
+  "CH": "^\d{3}\.\d{4}\.\d{4}\.\d{2}$", // Switzerland
+  "SE": "^\d{6}[-]?\d{4}$", // Sweden
+  "NO": "^\d{11}$", // Norway
+  "FI": "^\d{6}[-+]?\w{3}$", // Finland
+   "IS": "^\d{6}[-]?\d{4}$", // Iceland
+   "RU": "^\d{4}\s?\d{6}$|^\d{4}\s?\d{4}\s?\d{4}$", // Russia
+  "UA": "^\d{10}$|^\d{12}$", // Ukraine
+  "BY": "^\d{1}[A-Z]{2}\d{7}$", // Belarus
+  "KZ": "^\d{3}\d{2}\d{5}$", // Kazakhstan
+  "UZ": "^\d{9}$", // Uzbekistan
+  "TJ": "^\d{9}$", // Tajikistan
+  "KG": "^\d{9}$", // Kyrgyzstan
+  "TM": "^\d{8}$", // Turkmenistan
+  "AZ": "^\d{7}\w{1}$", // Azerbaijan
+  "GE": "^\d{11}$", // Georgia
+  "AM": "^\d{8}$", // Armenia
+  "IR": "^\d{10}$|^\d{12}$", // Iran
+  "IQ": "^\d{11}$", // Iraq
+  "SY": "^\d{10}$", // Syria
+  "LB": "^\d{4}\s?\d{4}$", // Lebanon
+  "JO": "^\d{1}\s?\d{7}$", // Jordan
+  "PS": "^\d{4}\s?\d{4}$", // Palestine
+  "KW": "^\d{12}$", // Kuwait
+  "QA": "^\d{11}$", // Qatar
+  "BH": "^\d{8}$", // Bahrain
+  "OM": "^\d{6}\s?\d{1}$", // Oman
+  "YE": "^\d{2}\s?\d{2}\s?\d{6}$", // Yemen
+  "EG": "^\d{14}$|^\d{9}$", // Egypt
+  "DZ": "^\d{1}[0-9]{2}\d{6}$", // Algeria
+  "MA": "^\d{1}\s?\d{5}\s?\d{4}\s?\d{2}$", // Morocco
+  "TN": "^\d{1}\d{4}\s?\d{5}\s?\d{2}$", // Tunisia
+  "LY": "^\d{9}$", // Libya
+  "SD": "^\d{8}\w{1}$", // Sudan
+  "ET": "^\d{2}\s?\d{6}\s?\d{2}$", // Ethiopia
+  "ER": "^\d{12}$", // Eritrea
+  "DJ": "^\d{8}$", // Djibouti
+  "SO": "^\d{8}\w{1}$", // Somalia
+  "KE": "^\d{1}\d{6}\s?\d{1}$", // Kenya
+  "TZ": "^\d{9}$|^\d{12}$", // Tanzania
+  "UG": "^\d{2}\s?\d{3}\s?\d{5}\s?\d{2}$", // Uganda
+  "RW": "^\d{12}$", // Rwanda
+  "BI": "^\d{10}$",
+  "ZA": "^\d{6}\s?\d{4}\s?\d{1}$", // South Africa
+  "MZ": "^\d{1}\d{7}$", // Mozambique
+  "LS": "^\d{1}\d{6}\s?\d{2}$", // Lesotho
+  "BW": "^\d{6}\s?\d{2}$", // Botswana
+  "SZ": "^\d{6}\s?\d{2}\s?\d{1}$", // Swaziland
+  "NA": "^\d{11}$", // Namibia
+  "ZM": "^\d{11}$", // Zambia
+  "ZW": "^\d{2}\s?\d{7}\w{1}$", // Zimbabwe
+  "MG": "^\d{14}$|^\d{1}\d{5}\s?\d{5}$", // Madagascar
+  "MU": "^\d{4}\s?\d{4}\s?\d{2}$", // Mauritius
+  "SC": "^\d{6}\s?\d{2}\s?\d{1}$", // Seychelles
+  "KM": "^\d{11}$", // Comoros
+  "RE": "^\d{13}$|^\d{1}\d{3}\s?\d{3}\s?\d{3}$", // Reunion
+  "YT": "^\d{13}$", // Mayotte
+  "MW": "^\d{4}\s?\d{5}\s?\d{2}$", // Malawi
+  "AO": "^\d{9}$|^\d{12}$", // Angola
+  "CV": "^\d{1}\d{6}\s?\d{2}\s?\d{2}$", // Cape Verde
+  "GQ": "^\d{9}$", // Equatorial Guinea
+  "ST": "^\d{8}$", // Sao Tome and Principe
+  "CI": "^\d{2}\s?\d{5}\s?\d{2}$", // Ivory Coast
+  "LR": "^\d{4}\s?\d{4}\s?\d{2}$", // Liberia
+  "GM": "^\d{8}$", // Gambia
+  "SN": "^\d{1}[0-9]{2}\s?\d{5}\s?\d{2}$", // Senegal
+  "GN": "^\d{9}$", // Guinea
+  "BF": "^\d{1}\d{4}\s?\d{4}\s?\d{2}$", // Burkina Faso
+  "NE": "^\d{4}\s?\d{4}\s?\d{2}$", // Niger
+  "TG": "^\d{1}\d{5}\s?\d{2}\s?\d{1}$", // Togo
+  "BJ": "^\d{1}\d{4}\s?\d{4}$", // Benin
+  "GH": "^\d{2}\s?\d{3}\s?\d{2}\s?\d{1}$", // Ghana
+  "NG": "^\d{11}$", // Nigeria
+  "SS": "^\d{9}$", // South Sudan
+  "CM": "^\d{9}$", // Cameroon
+  "CF": "^\d{8}$", // Central African Republic
+  "CD": "^\d{2}\s?\d{2}\s?\d{5}\s?\d{2}$", // Democratic Republic of the Congo
+  "CG": "^\d{1}\d{4}\s?\d{4}\s?\d{2}$", // Republic of the Congo
+  "GA": "^\d{1}\d{4}\s?\d{4}\s?\d{2}$", // Gabon
+  "EH": "^\\d{2}[0-9]{5}$", // Western Sahara
+  "MR": "^\d{1}\d{5}\s?\d{5}$", // Mauritania
+  "ML": "^\d{1}\d{4}\s?\d{4}\s?\d{2}$", // Mali
+  "SL": "^[a-zA-Z]{2}\d{5,6}[a-zA-Z]{1}$", // Sierra Leone
+  "GW": "^\d{1}\d{8}$", // Guinea-Bissau
+}
